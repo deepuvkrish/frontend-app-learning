@@ -140,7 +140,7 @@ describe('Unit', () => {
     render(<Unit {...mockData} />);
     window.postMessage(testMessageWithOffset, '*');
 
-    expect(waitFor(() => expect(window.scrollTo()).toHaveBeenCalled()));
+    await expect(waitFor(() => expect(window.scrollTo()).toHaveBeenCalled()));
     expect(window.scrollY === testMessageWithOffset.offset);
   });
 
