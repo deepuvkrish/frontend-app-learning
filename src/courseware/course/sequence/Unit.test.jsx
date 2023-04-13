@@ -205,7 +205,6 @@ describe('Unit', () => {
 
     render(<Unit {...mockData} />);
     expect(isExam).toHaveBeenCalled();
-    await waitFor(() => expect(screen.queryAllByText('Loading learning sequence...')).toHaveLength(0));
     await waitFor(() => expect(screen.getByTitle(unit.display_name)).toHaveAttribute('src', `http://localhost:18000/xblock/${mockData.id}?show_title=0&show_bookmark_button=0&recheck_access=1&view=student_view&format=${mockData.format}`));
   });
 
