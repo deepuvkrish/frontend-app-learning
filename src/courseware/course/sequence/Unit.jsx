@@ -200,12 +200,7 @@ const Unit = ({
           <HonorCode courseId={courseId} />
         </Suspense>
       )}
-      {!shouldDisplayHonorCode && !hasLoaded && !showError && (
-        <PageLoading
-          srMessage={intl.formatMessage(messages.loadingSequence)}
-        />
-      )}
-      {!showError && !hasLoaded && blockExamAccess && (
+      {(!shouldDisplayHonorCode || blockExamAccess) && !hasLoaded && !showError && (
         <PageLoading
           srMessage={intl.formatMessage(messages.loadingSequence)}
         />
