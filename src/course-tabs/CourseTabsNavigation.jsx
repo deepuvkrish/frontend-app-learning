@@ -11,10 +11,12 @@ const CourseTabsNavigation = ({
 }) => (
   <div id="courseTabsNavigation" className={classNames('course-tabs-navigation', className)}>
     <div className="container-xl">
+      {/* STARTING FROM HERE */}
       <Tabs
         className="nav-underline-tabs"
         aria-label={intl.formatMessage(messages.courseMaterial)}
       >
+        {/* NAVBAR STARTING FROM HERE */}
         {tabs.map(({ url, title, slug }) => (
           <a
             key={slug}

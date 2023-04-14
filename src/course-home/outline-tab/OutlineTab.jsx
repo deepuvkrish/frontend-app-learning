@@ -5,7 +5,8 @@ import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { history } from '@edx/frontend-platform';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { Button } from '@edx/paragon';
+import { Button, Icon } from '@edx/paragon';
+import { CalendarMonth, BookmarkAdd } from '@edx/paragon/icons';
 import { AlertList } from '../../generic/user-messages';
 
 import CourseDates from './widgets/CourseDates';
@@ -29,15 +30,28 @@ import WelcomeMessage from './widgets/WelcomeMessage';
 import ProctoringInfoPanel from './widgets/ProctoringInfoPanel';
 import AccountActivationAlert from '../../alerts/logistration-alert/AccountActivationAlert';
 
-const OutlineTab = ({ intl }) => {
+import DateSummary from './DateSummary';
+import { CourseTabsNavigation } from '../../course-tabs';
+
+const OutlineTab = ({
+  intl,
+  activeTabSlug,
+  children,
+  metadataModel,
+  unitId,
+}) => {
   const {
     courseId,
     proctoringPanelStatus,
   } = useSelector(state => state.courseHome);
 
   const {
+
+    celebrations,
+    originalUserIsStaff,
     isSelfPaced,
     org,
+    tabs,
     title,
     userTimezone,
   } = useModel('courseHomeMeta', courseId);
@@ -123,49 +137,105 @@ const OutlineTab = ({ intl }) => {
 
   return (
     <>
-      <div data-learner-type={learnerType} className="row w-100 mx-0 my-3 justify-content-between">
-        <div className="col-12 col-sm-auto p-0">
-          <div role="heading" aria-level="1" className="h2">{title}</div>
+      <div className="container-fluid">
+
+        {/* Background image */}
+        <div className="grid row">
+          <div className="course_details_left col-xl-8 col-md-8 col-sm-8">
+            <div className="course_title_description">
+              <span className="course_title_name">{title}</span>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum itaque, animi voluptas, magni cumque voluptatem iusto illum aspernatur, esse numquam id consequuntur consectetur saepe porro fuga molestiae alias repellat voluptatibus.</p>
+
+            </div>
+            <div className="course_timing_description row">
+              <div className="course_dates col-6">
+                <div className="course_start_date col">
+                  <div className="course_time_icon">
+                    <Icon src={CalendarMonth} />Starts On
+                  </div>
+                  <ol className="list-unstyled" style={{ marginLeft: '10px;' }}>
+                    {courseDateBlocks.map((courseDateBlock) => (
+                      <DateSummary
+                        key={courseDateBlock.date}
+                        dateBlock={courseDateBlock}
+                        userTimezone={userTimezone}
+                      />
+                    ))}
+                  </ol>
+                </div>
+                <div className="col course_seperator">|</div>
+                <div className="course_end_date col">
+                  <div className="course_time_icon">
+                    <Icon src={CalendarMonth} />Ends On
+                  </div>
+                  <ol className="list-unstyled" style={{ marginLeft: '10px;' }}>
+                    {courseDateBlocks.map((courseDateBlock) => (
+                      <DateSummary
+                        key={courseDateBlock.date}
+                        dateBlock={courseDateBlock}
+                        userTimezone={userTimezone}
+                      />
+                    ))}
+                  </ol>
+                </div>
+              </div>
+              <div className="course_duration col-3">
+                <span>Duration</span><br />
+                <span className="course_total_time">1 hour 30 minutes </span>
+              </div>
+              <div className="course_bookmark col-3">
+                <Icon src={BookmarkAdd} />Bookmark
+              </div>
+            </div>
+          </div>
+          <div className="course_status_right col-xl-4 col-md-4 col-sm-4">
+            <StartOrResumeCourseCard />
+          </div>
         </div>
-      </div>
-      <div className="row course-outline-tab">
-        <AccountActivationAlert />
-        <div className="col-12">
-          <AlertList
-            topic="outline-private-alerts"
-            customAlerts={{
-              ...privateCourseAlert,
-            }}
-          />
-        </div>
-        <div className="col col-12 col-md-8">
-          <AlertList
-            topic="outline-course-alerts"
-            className="mb-3"
-            customAlerts={{
-              ...certificateAvailableAlert,
-              ...courseEndAlert,
-              ...courseStartAlert,
-              ...scheduledContentAlert,
-            }}
-          />
-          {isSelfPaced && hasDeadlines && (
-            <>
-              <ShiftDatesAlert model="outline" fetch={fetchOutlineTab} />
-              <UpgradeToShiftDatesAlert model="outline" logUpgradeLinkClick={logUpgradeToShiftDatesLinkClick} />
-            </>
-          )}
-          <StartOrResumeCourseCard />
-          <WelcomeMessage courseId={courseId} />
-          {rootCourseId && (
-            <>
-              <div className="row w-100 m-0 mb-3 justify-content-end">
+        <CourseTabsNavigation tabs={tabs} className="mb-3" activeTabSlug={activeTabSlug} />
+
+        <div className="row course-outline-tab">
+          <AccountActivationAlert />
+          <div className="col-12">
+            <AlertList
+              topic="outline-private-alerts"
+              customAlerts={{
+                ...privateCourseAlert,
+              }}
+            />
+          </div>
+
+          <div className="col col-12 col-md-8">
+            <div data-learner-type={learnerType} className="row w-100 mx-0 my-3 justify-content-between">
+              <div className="course_expand_section col-12 p-0">
+                <div role="heading" aria-level="1" className="h2">About the Course</div>
                 <div className="col-12 col-md-auto p-0">
-                  <Button variant="outline-primary" block onClick={() => { setExpandAll(!expandAll); }}>
+                  <Button variant="outline-primary" block onClick={() => { setExpandAll(!expandAll); }} style={{ border: 'none' }}>
                     {expandAll ? intl.formatMessage(messages.collapseAll) : intl.formatMessage(messages.expandAll)}
                   </Button>
                 </div>
               </div>
+            </div>
+
+            <AlertList
+              topic="outline-course-alerts"
+              className="mb-3"
+              customAlerts={{
+                ...certificateAvailableAlert,
+                ...courseEndAlert,
+                ...courseStartAlert,
+                ...scheduledContentAlert,
+              }}
+            />
+            {isSelfPaced && hasDeadlines && (
+            <>
+              <ShiftDatesAlert model="outline" fetch={fetchOutlineTab} />
+              <UpgradeToShiftDatesAlert model="outline" logUpgradeLinkClick={logUpgradeToShiftDatesLinkClick} />
+            </>
+            )}
+            <WelcomeMessage courseId={courseId} />
+            {rootCourseId && (
+            <>
               <ol id="courseHome-outline" className="list-unstyled">
                 {courses[rootCourseId].sectionIds.map((sectionId) => (
                   <Section
@@ -178,9 +248,10 @@ const OutlineTab = ({ intl }) => {
                 ))}
               </ol>
             </>
-          )}
-        </div>
-        {rootCourseId && (
+            )}
+          </div>
+
+          {rootCourseId && (
           <div className="col col-12 col-md-4">
             <ProctoringInfoPanel />
             { /** Defer showing the goal widget until the ProctoringInfoPanel has resolved or has been determined as
@@ -205,10 +276,10 @@ const OutlineTab = ({ intl }) => {
               courseId={courseId}
               org={org}
             />
-            <CourseDates />
-            <CourseHandouts />
           </div>
-        )}
+          )}
+        </div>
+
       </div>
     </>
   );

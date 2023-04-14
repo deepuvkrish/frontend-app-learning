@@ -12,6 +12,8 @@ import { faCheckCircle as fasCheckCircle } from '@fortawesome/free-solid-svg-ico
 import { faCheckCircle as farCheckCircle } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { Icon } from '@edx/paragon';
+import { KeyboardArrowRight } from '@edx/paragon/icons';
 import EffortEstimate from '../../shared/effort-estimate';
 import { useModel } from '../../generic/model-store';
 import messages from './messages';
@@ -86,25 +88,9 @@ const SequenceLink = ({
   return (
     <li>
       <div className={classNames('', { 'mt-2 pt-2 border-top border-light': !first })}>
-        <div className="row w-100 m-0">
+        <div className="row w-100 m-0" style={{ justifyContent: 'space-evenly' }}>
           <div className="col-auto p-0">
-            {complete ? (
-              <FontAwesomeIcon
-                icon={fasCheckCircle}
-                fixedWidth
-                className="float-left text-success mt-1"
-                aria-hidden="true"
-                title={intl.formatMessage(messages.completedAssignment)}
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon={farCheckCircle}
-                fixedWidth
-                className="float-left text-gray-400 mt-1"
-                aria-hidden="true"
-                title={intl.formatMessage(messages.incompleteAssignment)}
-              />
-            )}
+            <Icon src={KeyboardArrowRight} />
           </div>
           <div className="col-10 p-0 ml-3 text-break">
             <span className="align-middle">{displayTitle}</span>
@@ -113,6 +99,25 @@ const SequenceLink = ({
             </span>
             <EffortEstimate className="ml-3 align-middle" block={sequence} />
           </div>
+
+          {complete ? (
+            <FontAwesomeIcon
+              icon={fasCheckCircle}
+              fixedWidth
+              className="float-left text-success mt-1"
+              aria-hidden="true"
+              title={intl.formatMessage(messages.completedAssignment)}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={farCheckCircle}
+              fixedWidth
+              className="float-left text-gray-400 mt-1"
+              aria-hidden="true"
+              title={intl.formatMessage(messages.incompleteAssignment)}
+            />
+          )}
+
         </div>
         <div className="row w-100 m-0 ml-3 pl-3">
           <small className="text-body pl-2">

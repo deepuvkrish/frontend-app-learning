@@ -12,8 +12,8 @@
   "scripts": {
     "build": "fedx-scripts webpack",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
-    "lint": "fedx-scripts eslint --ext .js --ext .jsx .",
-    "lint:fix": "fedx-scripts eslint --fix --ext .js --ext .jsx .",
+    "lint": "fedx-scripts eslint --ext .js --ext .js .",
+    "lint:fix": "fedx-scripts eslint --fix --ext .js --ext .js .",
     "prepare": "husky install",
     "snapshot": "fedx-scripts jest --updateSnapshot",
     "start": "fedx-scripts webpack-dev-server --progress",
@@ -34,7 +34,7 @@
     "@edx/frontend-component-header": "3.6.4",
     "@edx/frontend-lib-special-exams": "2.10.0",
     "@edx/frontend-platform": "3.4.1",
-    "@edx/paragon": "20.28.4",
+    "@edx/paragon": "^20.28.4",
     "@fortawesome/fontawesome-svg-core": "1.3.0",
     "@fortawesome/free-brands-svg-icons": "5.15.4",
     "@fortawesome/free-regular-svg-icons": "5.15.4",
@@ -73,6 +73,7 @@
     "axios-mock-adapter": "1.20.0",
     "copy-webpack-plugin": "^11.0.0",
     "es-check": "6.2.1",
+    "eslint-plugin-disable": "^2.0.3",
     "husky": "7.0.4",
     "jest": "27.5.1",
     "rosie": "2.1.0"

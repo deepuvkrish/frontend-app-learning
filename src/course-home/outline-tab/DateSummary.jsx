@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { FormattedDate } from '@edx/frontend-platform/i18n';
 import React from 'react';
@@ -35,10 +33,10 @@ const DateSummary = ({
   };
 
   return (
-    <li className="p-0 mb-3 small text-dark-500">
+    <li className="p-0 mb-3 small">
       <div className="row">
-        <FontAwesomeIcon icon={faCalendarAlt} className="ml-3 mt-1 mr-1" fixedWidth />
-        <div className="ml-1 font-weight-bold">
+
+        <div className="ml-1 font-weight-bold" style={{ fontSize: '14px' }}>
           <FormattedDate
             value={dateBlock.date}
             day="numeric"
@@ -48,30 +46,6 @@ const DateSummary = ({
             {...timezoneFormatArgs}
           />
         </div>
-      </div>
-      <div className="row ml-4 pr-2">
-        <div className="date-summary-text">
-          {linkedTitle && (
-            <div className="font-weight-bold mt-2">
-              <a href={dateBlock.link}>{dateBlock.title}</a>
-            </div>
-          )}
-          {!linkedTitle && (
-            <div className="font-weight-bold mt-2">{dateBlock.title}</div>
-          )}
-        </div>
-        {dateBlock.description && (
-          <div className="date-summary-text mt-1">{dateBlock.description}</div>
-        )}
-        {!linkedTitle && dateBlock.link && (
-          <a
-            href={dateBlock.link}
-            onClick={dateBlock.dateType === 'verified-upgrade-deadline' ? logVerifiedUpgradeClick : () => {}}
-            className="description-link"
-          >
-            {dateBlock.linkText}
-          </a>
-        )}
       </div>
     </li>
   );

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button, Card } from '@edx/paragon';
+import { Button, Card, Icon } from '@edx/paragon';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
 import { useSelector } from 'react-redux';
 import { sendTrackingLogEvent } from '@edx/frontend-platform/analytics';
+import { PlayCircleOutline } from '@edx/paragon/icons';
 import messages from '../messages';
 import { useModel } from '../../../generic/model-store';
 
@@ -41,24 +42,21 @@ const StartOrResumeCourseCard = ({ intl }) => {
   };
 
   return (
-    <Card className="mb-3 raised-card" data-testid="start-resume-card">
+    <div className="mb-3 raised-card" data-testid="start-resume-card">
       <Card.Header
-        title={hasVisitedCourse ? intl.formatMessage(messages.resumeBlurb) : intl.formatMessage(messages.startBlurb)}
         actions={(
           <Button
-            variant="brand"
             block
             href={resumeCourseUrl}
             onClick={() => logResumeCourseClick()}
+            style={{ color: '#000', backgroundColor: '#FFF', borderColor: 'none' }}
           >
+            <Icon src={PlayCircleOutline} />
             {hasVisitedCourse ? intl.formatMessage(messages.resume) : intl.formatMessage(messages.start)}
           </Button>
         )}
       />
-      {/* Footer is needed for internal vertical spacing to work out. If you can remove, be my guest */}
-      {/* eslint-disable-next-line react/jsx-no-useless-fragment */}
-      <Card.Footer><></></Card.Footer>
-    </Card>
+    </div>
   );
 };
 

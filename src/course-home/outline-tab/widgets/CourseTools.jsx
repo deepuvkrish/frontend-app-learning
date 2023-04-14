@@ -12,7 +12,6 @@ import { faNewspaper } from '@fortawesome/free-regular-svg-icons';
 
 import messages from '../messages';
 import { useModel } from '../../../generic/model-store';
-import LaunchCourseHomeTourButton from '../../../product-tours/newUserCourseHomeTour/LaunchCourseHomeTourButton';
 
 const CourseTools = ({ intl }) => {
   const {
@@ -63,7 +62,9 @@ const CourseTools = ({ intl }) => {
 
   return (
     <section className="mb-4">
-      <h2 className="h4">{intl.formatMessage(messages.tools)}</h2>
+      <h2 className="course_overview_title h4">{intl.formatMessage(messages.overview)}</h2>
+      <p className="course_overview_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum accusantium, dolore assumenda quibusdam molestias totam. Dolorem earum, quidem consequatur fugit sed placeat ut ullam laborum doloribus tenetur quam iusto ipsa!</p>
+
       <ul className="list-unstyled">
         {courseTools.map((courseTool) => (
           <li key={courseTool.analyticsId} className="small">
@@ -73,9 +74,6 @@ const CourseTools = ({ intl }) => {
             </a>
           </li>
         ))}
-        <li className="small" id="courseHome-launchTourLink">
-          <LaunchCourseHomeTourButton />
-        </li>
       </ul>
     </section>
   );

@@ -36,8 +36,11 @@
   }
 }
 
+
 .course-tabs-navigation {
   border-bottom: solid 1px #eaeaea;
+  z-index: 5;
+  position: relative;
 
   .nav a,
   .nav button {
@@ -360,6 +363,126 @@
   border: 0 !important;
   box-shadow: 0 .0625rem .125rem rgba(0, 0, 0, .2) !important;
 }
+
+
+
+
+// Custom styles
+
+.grid {
+  min-height:200px;
+  display: block;
+  color:white;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  background-color: rgb(0, 0, 0);
+}
+
+.item {
+  
+}
+
+.preview {
+
+}
+
+
+.style-01 {
+  
+}
+
+.item-info{
+  color: white;
+}
+
+.course-outline-tab{
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.course_details_left{
+  display:flex;
+  flex-direction:column;
+
+}
+
+.course_title_description{
+  display: grid;
+  align-content: end;
+  min-height: 70%;
+  padding:40px;
+  font-family: 'Inter', sans-serif;
+
+}
+
+.course_title_description p{
+  font-size:14px;
+}
+.course_timing_description{
+  display: flex;
+  flex-direction: row;
+  padding:40px;
+}
+.course_title_name{
+  font-size: 30px;
+  font-family: inter;
+  font-weight: 600;
+  padding-bottom: 5px;
+  font-family: 'Inter', sans-serif;
+}
+
+.course_dates{
+  display:flex;
+  flex-direction: row;
+  color:white;
+  justify-content: space-evenly;
+}
+.course_start_date{
+  display: flex;
+  flex-direction:column;
+}
+
+.course_time_icon{
+  display: flex;
+}
+.course_bookmark{
+  display:flex;
+  flex-direction:row;
+}
+
+.course_total_time{
+  font-size:12px;
+  line-height: 29.64px;
+
+}
+.course_seperator{
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.course_status_right {
+  display: grid;
+  align-items: end;
+  justify-content: center;
+}
+.course_expand_section{
+  display:flex;
+  justify-content: space-between;
+}
+.course_overview_title{
+  font-family:'Inter';
+  font-size:24px;
+  font-weight:600px;
+  color:#1D2939;
+}
+.course_overview_description{
+  line-break: loose;
+  font-size: 16px;
+  text-align: justify;
+}
+
+
+
 
 // Import component-specific sass files
 @import "courseware/course/celebration/CelebrationModal.scss";

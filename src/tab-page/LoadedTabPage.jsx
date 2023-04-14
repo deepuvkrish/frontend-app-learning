@@ -4,8 +4,6 @@ import { Helmet } from 'react-helmet';
 
 import { getConfig } from '@edx/frontend-platform';
 import { useToggle } from '@edx/paragon';
-
-import { CourseTabsNavigation } from '../course-tabs';
 import { useModel } from '../generic/model-store';
 import { AlertList } from '../generic/user-messages';
 import StreakModal from '../shared/streak-celebration';
@@ -41,6 +39,13 @@ const LoadedTabPage = ({
   const streakLengthToCelebrate = celebrations && celebrations.streakLengthToCelebrate;
   const streakDiscountCouponEnabled = celebrations && celebrations.streakDiscountEnabled && verifiedMode;
   const [isStreakCelebrationOpen,, closeStreakCelebration] = useToggle(streakLengthToCelebrate);
+  const custCont = {
+    width: '100%',
+    paddingRight: '0px',
+    paddingLeft: '0px',
+    marginRight: 'auto',
+    marginLeft: 'auto',
+  };
 
   return (
     <>
@@ -78,8 +83,7 @@ const LoadedTabPage = ({
             ...logistrationAlert,
           }}
         />
-        <CourseTabsNavigation tabs={tabs} className="mb-3" activeTabSlug={activeTabSlug} />
-        <div className="container-xl">
+        <div style={custCont}>
           {children}
         </div>
       </main>

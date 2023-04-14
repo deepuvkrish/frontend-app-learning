@@ -164,6 +164,12 @@ const messages = defineMessages({
     defaultMessage: 'Course Tools',
     description: 'Headline for the (course tools) section in course outline. course tool might include links to course bookmarks, financial assistance...etc',
   },
+  overview: {
+    id: 'learning.outline.overview',
+    defaultMessage: 'Course Overview',
+    description: 'Headline for the (course tools) section in course outline. course overview might include description to course',
+
+  },
   upgradeButton: {
     id: 'learning.outline.upgradeButton',
     defaultMessage: 'Upgrade ({symbol}{price})',
