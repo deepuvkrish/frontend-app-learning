@@ -61,20 +61,28 @@ const CourseTools = ({ intl }) => {
   };
 
   return (
-    <section className="mb-4">
-      <h2 className="course_overview_title h4">{intl.formatMessage(messages.overview)}</h2>
-      <p className="course_overview_description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum accusantium, dolore assumenda quibusdam molestias totam. Dolorem earum, quidem consequatur fugit sed placeat ut ullam laborum doloribus tenetur quam iusto ipsa!</p>
+    <section className="mb-4 course_tools_section">
+      <span className="course_overview_title">{intl.formatMessage(messages.informative)}</span>
+      <div className="course_auth_list">
+        <div className="couse_inform">
+          <span className='course_left'>Author Name</span>
+          <span className='course_right'>Pratian</span>
+        </div>
+        <div className="couse_inform">
+          <span className='course_left'>Level</span>
+          <span className='course_right'>Beginner</span>
+        </div>
+        <div className="couse_inform">
+          <span className='course_left'>Duration </span>
+          <span className='course_right'>1h 40min</span>
+        </div>
+        <div className="couse_inform">
+          <span className='course_left'>Updated</span>
+          <span className='course_right'>12 Jan 2023</span>
+        </div>
+      </div>
 
-      <ul className="list-unstyled">
-        {courseTools.map((courseTool) => (
-          <li key={courseTool.analyticsId} className="small">
-            <a href={courseTool.url} onClick={() => logClick(courseTool.analyticsId)}>
-              <FontAwesomeIcon icon={renderIcon(courseTool.analyticsId)} className="mr-2" fixedWidth />
-              {courseTool.title}
-            </a>
-          </li>
-        ))}
-      </ul>
+      
     </section>
   );
 };

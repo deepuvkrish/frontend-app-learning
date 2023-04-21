@@ -5,8 +5,10 @@ import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { history } from '@edx/frontend-platform';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+
 import { Button, Icon } from '@edx/paragon';
 import { CalendarMonth, BookmarkAdd } from '@edx/paragon/icons';
+
 import { AlertList } from '../../generic/user-messages';
 
 import CourseDates from './widgets/CourseDates';
@@ -139,7 +141,7 @@ const OutlineTab = ({
     <>
       <div className="container-fluid">
 
-        {/* Background image */}
+        {/* Background image added here  */}
         <div className="grid row">
           <div className="course_details_left col-xl-8 col-md-8 col-sm-8">
             <div className="course_title_description">
@@ -192,9 +194,12 @@ const OutlineTab = ({
             <StartOrResumeCourseCard />
           </div>
         </div>
+
+
+
         <CourseTabsNavigation tabs={tabs} className="mb-3" activeTabSlug={activeTabSlug} />
 
-        <div className="row course-outline-tab">
+        <div className="row course-outline-tab" >
           <AccountActivationAlert />
           <div className="col-12">
             <AlertList
@@ -208,7 +213,7 @@ const OutlineTab = ({
           <div className="col col-12 col-md-8">
             <div data-learner-type={learnerType} className="row w-100 mx-0 my-3 justify-content-between">
               <div className="course_expand_section col-12 p-0">
-                <div role="heading" aria-level="1" className="h2">About the Course</div>
+                <div role="heading" aria-level="1" className="course_desc_abt">About the Course</div>
                 <div className="col-12 col-md-auto p-0">
                   <Button variant="outline-primary" block onClick={() => { setExpandAll(!expandAll); }} style={{ border: 'none' }}>
                     {expandAll ? intl.formatMessage(messages.collapseAll) : intl.formatMessage(messages.expandAll)}
@@ -263,6 +268,11 @@ const OutlineTab = ({
               />
             )}
             <CourseTools />
+            <CourseHandouts />
+            <section className="mb-4">
+              <span className="course_overview_title">{intl.formatMessage(messages.handouts)}</span>
+              <span className="course_descrip">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quibusdam error mollitia id molestiae. Tempore quaerat porro quo veniam laboriosam, velit sit quis laudantium, perspiciatis adipisci minus voluptatibus accusantium commodi.</span>
+            </section>
             <UpgradeNotification
               offer={offer}
               verifiedMode={verifiedMode}

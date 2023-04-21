@@ -9,7 +9,7 @@ import Tabs from '../generic/tabs/Tabs';
 const CourseTabsNavigation = ({
   activeTabSlug, className, tabs, intl,
 }) => (
-  <div id="courseTabsNavigation" className={classNames('course-tabs-navigation', className)}>
+  <div id="courseTabsNavigation" className={classNames('course-tabs-navigation')}>
     <div className="container-xl">
       {/* STARTING FROM HERE */}
       <Tabs

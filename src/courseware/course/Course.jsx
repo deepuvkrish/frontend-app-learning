@@ -4,8 +4,10 @@ import { Helmet } from 'react-helmet';
 import { useDispatch } from 'react-redux';
 import { getConfig } from '@edx/frontend-platform';
 import { breakpoints, useWindowSize } from '@edx/paragon';
-
+import { Button, Icon } from '@edx/paragon';
+import { CalendarMonth, BookmarkAdd } from '@edx/paragon/icons';
 import { AlertList } from '../../generic/user-messages';
+
 
 import Sequence from './sequence';
 
@@ -28,10 +30,20 @@ const Course = ({
   windowWidth,
 }) => {
   const course = useModel('coursewareMeta', courseId);
+
+
+
   const {
     celebrations,
+    originalUserIsStaff,
+    isSelfPaced,
     isStaff,
+    org,
+    tabs,
+    title,
+    userTimezone,
   } = useModel('courseHomeMeta', courseId);
+
   const sequence = useModel('sequences', sequenceId);
   const section = useModel('sections', sequence ? sequence.sectionId : null);
 
@@ -78,45 +90,61 @@ const Course = ({
   }, [sequenceId]);
 
   return (
-    <SidebarProvider courseId={courseId} unitId={unitId}>
-      <Helmet>
-        <title>{`${pageTitleBreadCrumbs.join(' | ')} | ${getConfig().SITE_NAME}`}</title>
-      </Helmet>
-      <div className="position-relative d-flex align-items-start">
-        <CourseBreadcrumbs
-          courseId={courseId}
-          sectionId={section ? section.id : null}
-          sequenceId={sequenceId}
-          isStaff={isStaff}
-          unitId={unitId}
-        />
-        {shouldDisplayTriggers && (
-          <SidebarTriggers />
-        )}
-      </div>
+    <div className='container-fluid'>
 
-      <AlertList topic="sequence" />
-      <Sequence
-        unitId={unitId}
-        sequenceId={sequenceId}
-        courseId={courseId}
-        unitNavigationHandler={unitNavigationHandler}
-        nextSequenceHandler={nextSequenceHandler}
-        previousSequenceHandler={previousSequenceHandler}
-      />
-      <CelebrationModal
-        courseId={courseId}
-        isOpen={firstSectionCelebrationOpen}
-        onClose={() => setFirstSectionCelebrationOpen(false)}
-      />
-      <WeeklyGoalCelebrationModal
-        courseId={courseId}
-        daysPerWeek={daysPerWeek}
-        isOpen={weeklyGoalCelebrationOpen}
-        onClose={() => setWeeklyGoalCelebrationOpen(false)}
-      />
-      <ContentTools course={course} />
-    </SidebarProvider>
+
+      {/* Background image */}
+      <div className="grid row">
+          <div className="course_details_left col-xl-8 col-md-8 col-sm-8">
+            <div className="course_title_description">
+              <span className="course_title_name">{title}</span>
+
+            </div>
+            <div className="position-relative d-flex align-items-start">
+              <CourseBreadcrumbs
+                courseId={courseId}
+                sectionId={section ? section.id : null}
+                sequenceId={sequenceId}
+                isStaff={isStaff}
+                unitId={unitId}
+              />
+            </div>             
+          </div>
+      </div>
+      <SidebarProvider courseId={courseId} unitId={unitId}>
+        <Helmet>
+          <title>{`${pageTitleBreadCrumbs.join(' | ')} | ${getConfig().SITE_NAME}`}</title>
+        </Helmet>
+        <div className="position-relative d-flex align-items-start">
+          
+          {shouldDisplayTriggers && (
+            <SidebarTriggers />
+          )}
+        </div>
+
+        <AlertList topic="sequence" />
+        <Sequence
+          unitId={unitId}
+          sequenceId={sequenceId}
+          courseId={courseId}
+          unitNavigationHandler={unitNavigationHandler}
+          nextSequenceHandler={nextSequenceHandler}
+          previousSequenceHandler={previousSequenceHandler}
+        />
+        <CelebrationModal
+          courseId={courseId}
+          isOpen={firstSectionCelebrationOpen}
+          onClose={() => setFirstSectionCelebrationOpen(false)}
+        />
+        <WeeklyGoalCelebrationModal
+          courseId={courseId}
+          daysPerWeek={daysPerWeek}
+          isOpen={weeklyGoalCelebrationOpen}
+          onClose={() => setWeeklyGoalCelebrationOpen(false)}
+        />
+        <ContentTools course={course} />
+      </SidebarProvider>
+    </div>
   );
 };
 

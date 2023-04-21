@@ -67,7 +67,7 @@ const messages = defineMessages({
   },
   handouts: {
     id: 'learning.outline.handouts',
-    defaultMessage: 'Course Handouts',
+    defaultMessage: 'Course Description',
     description: 'Header for (Course Handouts) section in course outline',
   },
   incompleteAssignment: {
@@ -164,9 +164,9 @@ const messages = defineMessages({
     defaultMessage: 'Course Tools',
     description: 'Headline for the (course tools) section in course outline. course tool might include links to course bookmarks, financial assistance...etc',
   },
-  overview: {
-    id: 'learning.outline.overview',
-    defaultMessage: 'Course Overview',
+  informative: {
+    id: 'learning.outline.info',
+    defaultMessage: 'Course info',
     description: 'Headline for the (course tools) section in course outline. course overview might include description to course',
 
   },

@@ -4,12 +4,15 @@ import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Collapsible, IconButton, Icon } from '@edx/paragon';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
+import { KeyboardArrowRight } from '@edx/paragon/icons';
 import { KeyboardArrowDown } from '@edx/paragon/icons';
 import SequenceLink from './SequenceLink';
 import { useModel } from '../../generic/model-store';
 
 import genericMessages from '../../generic/messages';
 import messages from './messages';
+
+
 
 const Section = ({
   courseId,
@@ -42,8 +45,6 @@ const Section = ({
 
   const sectionTitle = (
     <div className="row w-100 m-0">
-      <Icon src={KeyboardArrowDown} />
-
       <div className="col-10 ml-3 p-0 font-weight-bold text-dark-500">
         <span className="align-middle">{title}</span>
         <span className="sr-only">
@@ -63,7 +64,8 @@ const Section = ({
         open={open}
         onToggle={() => { setOpen(!open); }}
         iconWhenClosed={(
-          <IconButton
+          <Icon 
+            src={KeyboardArrowRight}
             alt={intl.formatMessage(messages.openSection)}
             icon={faPlus}
             onClick={() => { setOpen(true); }}
@@ -71,12 +73,12 @@ const Section = ({
           />
         )}
         iconWhenOpen={(
-          <IconButton
-            alt={intl.formatMessage(genericMessages.close)}
-            icon={faMinus}
-            onClick={() => { setOpen(false); }}
-            size="sm"
-          />
+          <Icon 
+          src={KeyboardArrowDown}
+          alt={intl.formatMessage(genericMessages.close)}
+          onClick={() => { setOpen(false); }}
+          size="sm"
+           />
         )}
       >
         <ol className="list-unstyled">

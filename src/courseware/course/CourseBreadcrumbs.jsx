@@ -9,18 +9,26 @@ import { SelectMenu } from '@edx/paragon';
 import { Link } from 'react-router-dom';
 import { useModel, useModels } from '../../generic/model-store';
 import JumpNavMenuItem from './JumpNavMenuItem';
+import { Icon } from '@edx/paragon';
+import { KeyboardArrowRight } from '@edx/paragon/icons';
 
 const CourseBreadcrumb = ({
   content, withSeparator, courseId, sequenceId, unitId, isStaff,
 }) => {
   const defaultContent = content.filter(destination => destination.default)[0] || { id: courseId, label: '', sequences: [] };
+
+
   return (
     <>
       {withSeparator && (
-        <li className="col-auto p-0 mx-2 text-primary-500 text-truncate text-nowrap" role="presentation" aria-hidden>/</li>
+        <li className="col-auto p-0 mx-2 read-crumbs-ico text-truncate text-nowrap" role="presentation" aria-hidden>
+            <Icon src={KeyboardArrowRight} />
+
+        </li>
       )}
 
       <li style={{
+        fontSize:'12px',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
@@ -122,32 +130,46 @@ const CourseBreadcrumbs = ({
     return [chapters, sequentials];
   }, [courseStatus, sequenceStatus, allSequencesInSections]);
 
+  const {
+    celebrations,
+    originalUserIsStaff,
+    isSelfPaced,
+    
+    org,
+    tabs,
+    title,
+    userTimezone,
+  } = useModel('courseHomeMeta', courseId);
+
+
+
   return (
     <nav aria-label="breadcrumb" className="my-4 d-inline-block col-sm-10">
       <ol className="list-unstyled d-flex  flex-nowrap align-items-center m-0">
         <li className="list-unstyled col-auto m-0 p-0">
           <Link
-            className="flex-shrink-0 text-primary"
+            className="flex-shrink-0 text-bread-crumbs"
             to={`/course/${courseId}/home`}
           >
             <FontAwesomeIcon icon={faHome} className="mr-2" />
             <FormattedMessage
               id="learn.breadcrumb.navigation.course.home"
               description="The course home link in breadcrumbs nav"
-              defaultMessage="Course"
+              defaultMessage={title}
             />
           </Link>
         </li>
+
         {links.map(content => (
           <CourseBreadcrumb
-            courseId={courseId}
-            sequenceId={sequenceId}
-            content={content}
-            unitId={unitId}
-            withSeparator
-            isStaff={isStaff}
+          courseId={courseId}
+          sequenceId={sequenceId}
+          content={content}
+          unitId={unitId}
+          withSeparator
+          isStaff={isStaff}
           />
-        ))}
+          ))}
       </ol>
     </nav>
   );
