@@ -31,7 +31,7 @@ const CourseTabsNavigation = ({
   </div>
 );
 
-CourseTabsNavigation.propTypes = {
+CourseTabsNavigation.propTypes = {                                                                                                                                                                                                                                                                                                                                  
   activeTabSlug: PropTypes.string,
   className: PropTypes.string,
   tabs: PropTypes.arrayOf(PropTypes.shape({

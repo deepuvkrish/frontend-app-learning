@@ -87,7 +87,7 @@ const SequenceLink = ({
 
   return (
     <li>
-      <div className={classNames('', { 'mt-2 pt-2': !first })}>
+      <div className={classNames('subsection_course', { 'mt-2 pt-2': !first })}>
         <div className="row w-100 m-0" style={{ justifyContent: 'space-evenly' }}>
           <div className="col-auto p-0">
             <Icon src={KeyboardArrowRight} />
