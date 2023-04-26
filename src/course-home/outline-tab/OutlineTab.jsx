@@ -47,8 +47,21 @@ const OutlineTab = ({
     proctoringPanelStatus,
   } = useSelector(state => state.courseHome);
 
-  const {
 
+  const {
+    courseImage,
+    shortDescription,
+  } = useModel('coursedetailsMeta', courseId);
+  
+
+  // const tryex = JSON.stringify(media);
+  // const exa = JSON.parse(tryex)
+  // console.log("hoii" +  tryex)
+  // console.log('hii'+ exa)
+  // const newtrydata = exa.image.small
+
+
+  const {
     celebrations,
     originalUserIsStaff,
     isSelfPaced,
@@ -58,6 +71,7 @@ const OutlineTab = ({
     userTimezone,
   } = useModel('courseHomeMeta', courseId);
 
+  
   const {
     accessExpiration,
     courseBlocks: {
@@ -89,6 +103,9 @@ const OutlineTab = ({
     courserun_key: courseId,
   };
 
+
+
+  
   // Below the course title alerts (appearing in the order listed here)
   const courseStartAlert = useCourseStartAlert(courseId);
   const courseEndAlert = useCourseEndAlert(courseId);
@@ -143,77 +160,89 @@ const OutlineTab = ({
 
         {/* Background image added here  */}
         <div className="grid row">
-          <div className="course_details_left col-xl-8 col-md-8 col-sm-8">
-            <div className="course_title_description">
-              <span className="course_title_name">{title}</span>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum itaque, animi voluptas, magni cumque voluptatem iusto illum aspernatur, esse numquam id consequuntur consectetur saepe porro fuga molestiae alias repellat voluptatibus.</p>
+          <div className="back_grad">
 
-            </div>
-            <div className="course_timing_description row">
-              <div className="course_dates col-6">
-                <div className="course_start_date col">
-                  <div className="course_time_icon">
-                    <Icon src={CalendarMonth} />Starts On
+            <img src={courseImage} className='back_img'/> 
+            
+
+
+            <div className="course_details_left col-xl-8 col-md-8 col-sm-8">
+              <div className="course_title_description">
+                <span className="course_title_name">{title}</span>
+                <span>{shortDescription}</span>
+                
+              
+              </div>
+              <div className="course_timing_description row">
+                <div className="course_dates col-8">
+                  <div className="course_start_date col">
+                    <div className="course_time_icon">
+                      <Icon src={CalendarMonth} />Starts On
+                    </div>
+                    <ol className="list-unstyled" style={{ marginLeft: '10px;' }}>
+                      {courseDateBlocks.map((courseDateBlock) => (
+                        <DateSummary
+                          key={courseDateBlock.date}
+                          dateBlock={courseDateBlock}
+                          userTimezone={userTimezone}
+                        />
+                      ))}
+                    </ol>
                   </div>
-                  <ol className="list-unstyled" style={{ marginLeft: '10px;' }}>
-                    {courseDateBlocks.map((courseDateBlock) => (
-                      <DateSummary
-                        key={courseDateBlock.date}
-                        dateBlock={courseDateBlock}
-                        userTimezone={userTimezone}
-                      />
-                    ))}
-                  </ol>
-                </div>
-                <div className="col course_seperator">|</div>
-                <div className="course_end_date col">
-                  <div className="course_time_icon">
-                    <Icon src={CalendarMonth} />Ends On
+                  <div className="col course_seperator">|</div>
+                  <div className="course_end_date col">
+                    <div className="course_time_icon">
+                      <Icon src={CalendarMonth} />Ends On
+                    </div>
+                    <ol className="list-unstyled" style={{ marginLeft: '10px;' }}>
+                      {courseDateBlocks.map((courseDateBlock) => (
+                        <DateSummary
+                          key={courseDateBlock.date}
+                          dateBlock={courseDateBlock}
+                          userTimezone={userTimezone}
+                        />
+                      ))}
+                    </ol>
                   </div>
-                  <ol className="list-unstyled" style={{ marginLeft: '10px;' }}>
-                    {courseDateBlocks.map((courseDateBlock) => (
-                      <DateSummary
-                        key={courseDateBlock.date}
-                        dateBlock={courseDateBlock}
-                        userTimezone={userTimezone}
-                      />
-                    ))}
-                  </ol>
+                  <div className="course_duration col-3">
+                  <span>Duration</span>
+                  <span className="course_total_time">1 hour 30 minutes </span>
                 </div>
-              </div>
-              <div className="course_duration col-3">
-                <span>Duration</span><br />
-                <span className="course_total_time">1 hour 30 minutes </span>
-              </div>
-              <div className="course_bookmark col-3">
-                <Icon src={BookmarkAdd} />Bookmark
+                </div>
+                <div className="course_bookmark col-3">
+                  <CourseTools/>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="course_status_right col-xl-4 col-md-4 col-sm-4">
-            <StartOrResumeCourseCard />
+            <div className="course_status_right col-xl-4 col-md-4 col-sm-4">
+              <StartOrResumeCourseCard />
+            </div>
+
           </div>
         </div>
 
 
 
-        <CourseTabsNavigation tabs={tabs} className="mb-3" activeTabSlug={activeTabSlug} />
 
         <div className="row course-outline-tab" >
-          <AccountActivationAlert />
-          <div className="col-12">
-            <AlertList
-              topic="outline-private-alerts"
-              customAlerts={{
-                ...privateCourseAlert,
-              }}
-            />
-          </div>
+            <div className="col col-12 col-md-8">
 
-          <div className="col col-12 col-md-8">
+            <CourseTabsNavigation tabs={tabs} className="mb-3" activeTabSlug={activeTabSlug} />
+
+            <AccountActivationAlert />
+            <div className="col-12">
+              <AlertList
+                topic="outline-private-alerts"
+                customAlerts={{
+                  ...privateCourseAlert,
+                }}
+              />
+            </div>
+
             <div data-learner-type={learnerType} className="row w-100 mx-0 my-3 justify-content-between">
               <div className="course_expand_section col-12 p-0">
-                <div role="heading" aria-level="1" className="course_desc_abt">About the Course</div>
+                <div role="heading" aria-level="1" className="course_desc_abt">About the Course
+                </div>
                 <div className="col-12 col-md-auto p-0">
                   <Button variant="outline-primary" block onClick={() => { setExpandAll(!expandAll); }} style={{ border: 'none' }}>
                     {expandAll ? intl.formatMessage(messages.collapseAll) : intl.formatMessage(messages.expandAll)}
@@ -221,6 +250,7 @@ const OutlineTab = ({
                 </div>
               </div>
             </div>
+              <hr className="hr_course"/>
 
             <AlertList
               topic="outline-course-alerts"
@@ -239,6 +269,8 @@ const OutlineTab = ({
             </>
             )}
             <WelcomeMessage courseId={courseId} />
+
+
             {rootCourseId && (
             <>
               <ol id="courseHome-outline" className="list-unstyled">
@@ -256,8 +288,11 @@ const OutlineTab = ({
             )}
           </div>
 
+
+
+
           {rootCourseId && (
-          <div className="col col-12 col-md-4">
+          <div className="col col-12 col-md-4 left_section_course">
             <ProctoringInfoPanel />
             { /** Defer showing the goal widget until the ProctoringInfoPanel has resolved or has been determined as
              disabled to avoid components bouncing around too much as screen is rendered */ }
@@ -267,12 +302,39 @@ const OutlineTab = ({
                 subscribedToReminders={selectedGoal && 'subscribedToReminders' in selectedGoal ? selectedGoal.subscribedToReminders : false}
               />
             )}
-            <CourseTools />
+
+
+            <section className="mb-4 course_tools_section">
+  
+              <span className="course_overview_title">{intl.formatMessage(messages.informative)}</span>
+                <div className="course_auth_list">
+                  <div className="couse_inform">
+                    <span className='course_left'>Author Name</span>
+                    <span className='course_right'>Pratian</span>
+                  </div>
+                  <div className="couse_inform">
+                    <span className='course_left'>Level</span>
+                    <span className='course_right'>Beginner</span>
+                  </div>
+                  <div className="couse_inform">
+                    <span className='course_left'>Duration </span>
+                    <span className='course_right'>1h 40min</span>
+                  </div>
+                  <div className="couse_inform">
+                    <span className='course_left'>Updated</span>
+                    <span className='course_right'>12 Jan 2023</span>
+                  </div>
+                </div>
+                </section>
+
             <CourseHandouts />
             <section className="mb-4">
               <span className="course_overview_title">{intl.formatMessage(messages.handouts)}</span>
-              <span className="course_descrip">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quibusdam error mollitia id molestiae. Tempore quaerat porro quo veniam laboriosam, velit sit quis laudantium, perspiciatis adipisci minus voluptatibus accusantium commodi.</span>
+              <span className="course_descrip">{shortDescription}</span>
             </section>
+
+
+            
             <UpgradeNotification
               offer={offer}
               verifiedMode={verifiedMode}

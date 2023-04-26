@@ -8,7 +8,6 @@ import { Button, Icon } from '@edx/paragon';
 import { CalendarMonth, BookmarkAdd } from '@edx/paragon/icons';
 import { AlertList } from '../../generic/user-messages';
 
-
 import Sequence from './sequence';
 
 import { CelebrationModal, shouldCelebrateOnSectionLoad, WeeklyGoalCelebrationModal } from './celebration';
@@ -94,7 +93,7 @@ const Course = ({
 
 
       {/* Background image */}
-      <div className="grid row">
+      {/* <div className="grid row">
           <div className="course_details_left col-xl-8 col-md-8 col-sm-8">
             <div className="course_title_description">
               <span className="course_title_name">{title}</span>
@@ -110,7 +109,7 @@ const Course = ({
               />
             </div>             
           </div>
-      </div>
+      </div> */}
       <SidebarProvider courseId={courseId} unitId={unitId}>
         <Helmet>
           <title>{`${pageTitleBreadCrumbs.join(' | ')} | ${getConfig().SITE_NAME}`}</title>
@@ -123,6 +122,7 @@ const Course = ({
         </div>
 
         <AlertList topic="sequence" />
+        
         <Sequence
           unitId={unitId}
           sequenceId={sequenceId}

@@ -24,6 +24,7 @@ const NotificationIcon = ({
             right: '0.55rem',
           }}
         />
+        
       )
       : null}
   </>

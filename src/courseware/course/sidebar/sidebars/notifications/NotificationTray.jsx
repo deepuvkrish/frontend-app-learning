@@ -1,13 +1,13 @@
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import classNames from 'classnames';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useModel } from '../../../../../generic/model-store';
 import UpgradeNotification from '../../../../../generic/upgrade-notification/UpgradeNotification';
-
 import messages from '../../../messages';
 import SidebarBase from '../../common/SidebarBase';
 import SidebarContext from '../../SidebarContext';
 import NotificationTrigger, { ID } from './NotificationTrigger';
+import SidebarSection from '../../SidebarSection';
 
 const NotificationTray = ({ intl }) => {
   const {
@@ -17,10 +17,20 @@ const NotificationTray = ({ intl }) => {
     upgradeNotificationCurrentState,
     setUpgradeNotificationCurrentState,
   } = useContext(SidebarContext);
+
+  const [expandAll, setExpandAll] = useState(false);
   const course = useModel('coursewareMeta', courseId);
+  const {
+    courseBlocks: {
+      courses,
+      sections,
+    } 
+    } = useModel('courseOutlineMeta', courseId);
+    
+  const rootCourseId = courses && Object.keys(courses)[0];
 
   const {
-    accessExpiration,
+    
     contentTypeGatingEnabled,
     marketingUrl,
     offer,
@@ -39,31 +49,28 @@ const NotificationTray = ({ intl }) => {
 
   return (
     <SidebarBase
-      title={intl.formatMessage(messages.notificationTitle)}
-      ariaLabel={intl.formatMessage(messages.notificationTray)}
+      title={intl.formatMessage(messages.coursetree)}
+      ariaLabel={intl.formatMessage(messages.coursetree)}
       sidebarId={ID}
       className={classNames({ 'h-100': !verifiedMode && !shouldDisplayFullScreen })}
     >
-      <div>{verifiedMode
-        ? (
-          <UpgradeNotification
-            offer={offer}
-            verifiedMode={verifiedMode}
-            accessExpiration={accessExpiration}
-            contentTypeGatingEnabled={contentTypeGatingEnabled}
-            marketingUrl={marketingUrl}
-            upsellPageName="in_course"
-            userTimezone={userTimezone}
-            shouldDisplayBorder={false}
-            timeOffsetMillis={timeOffsetMillis}
-            courseId={courseId}
-            org={org}
-            upgradeNotificationCurrentState={upgradeNotificationCurrentState}
-            setupgradeNotificationCurrentState={setUpgradeNotificationCurrentState}
-          />
-        ) : (
-          <p className="p-3 small">{intl.formatMessage(messages.noNotificationsMessage)}</p>
-        )}
+
+              <ol id="courseware-outline" className="list-unstyled">
+                {courses[rootCourseId].sectionIds.map((sectionId) => (
+                  <SidebarSection
+                    key={sectionId}
+                    courseId={courseId}
+                    defaultOpen={sections[sectionId].resumeBlock}
+                    expand={expandAll}
+                    section={sections[sectionId]}
+                  />
+                ))}
+              </ol>
+         
+
+      <div>
+
+      
       </div>
     </SidebarBase>
   );

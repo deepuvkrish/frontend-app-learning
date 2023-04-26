@@ -15,11 +15,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Icon } from '@edx/paragon';
 import { KeyboardArrowRight } from '@edx/paragon/icons';
 import { Check } from '@edx/paragon/icons';
-import EffortEstimate from '../../shared/effort-estimate';
-import { useModel } from '../../generic/model-store';
-import messages from './messages';
+import EffortEstimate from '../../../shared/effort-estimate';
+import { useModel } from '../../../generic/model-store';
+import messages from '../messages';
 
-const SequenceLink = ({
+const SidebarSequenceLink = ({
   id,
   intl,
   courseId,
@@ -35,7 +35,7 @@ const SequenceLink = ({
   } = sequence;
   const {
     userTimezone,
-  } = useModel('outline', courseId);
+  } = useModel('courseOutlineMeta', courseId);
 
   const timezoneFormatArgs = userTimezone ? { timeZone: userTimezone } : {};
 
@@ -130,7 +130,7 @@ const SequenceLink = ({
   );
 };
 
-SequenceLink.propTypes = {
+SidebarSequenceLink.propTypes = {
   id: PropTypes.string.isRequired,
   intl: intlShape.isRequired,
   courseId: PropTypes.string.isRequired,
@@ -138,4 +138,4 @@ SequenceLink.propTypes = {
   sequence: PropTypes.shape().isRequired,
 };
 
-export default injectIntl(SequenceLink);
+export default injectIntl(SidebarSequenceLink);

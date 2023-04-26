@@ -26,6 +26,11 @@ const messages = defineMessages({
     defaultMessage: 'Notifications',
     description: 'Title text displayed for the notification tray',
   },
+  coursetree: {
+    id: 'course.tree.title',
+    defaultMessage: 'Course Tree',
+    description: 'Title text displayed for the course tree',
+  },
   noNotificationsMessage: {
     id: 'notification.tray.no.message',
     defaultMessage: 'You have no new notifications at this time.',

@@ -40,20 +40,21 @@
 .course-tabs-navigation {
   z-index: 5;
   position: relative;
-  background: #0D0F12;
-  color:white;
+  background: #FFF;
+  color: #344054;
 
 
   .nav a,
   .nav button {
     &:hover {
-      border-bottom: 2px solid #36BFFA;
+      border-bottom: 5px solid #026AA2;
     }
   }
 
   .nav a {
     &:not(.active):hover {
-       border-bottom: 2px solid #027BBC;
+       border-bottom: 5px solid #026AA2;
+       font-weight: 600;
     }
   }
 }
@@ -64,7 +65,7 @@
   .nav-link {
     border-bottom: 4px solid transparent;
     border-top: 4px solid transparent;
-    color:white;
+    color:#667085;
 
     // temporary until we can remove .btn class from dropdowns
     border-left: 0;
@@ -75,8 +76,8 @@
     &:focus,
     &.active {
       font-weight: $font-weight-normal;
-      color: $primary-500;
-      border-bottom-color: $primary-500;
+      color: #344054;
+      border-bottom-color: 2px solid #026AA2;
     }
   }
 }
@@ -371,29 +372,48 @@
 // Custom styles
 
 .grid {
-  min-height:200px;
+  position: relative;
+  min-height:370px;
   display: block;
   color:white;
+  object-fit: cover;
   grid-template-columns: repeat(3, minmax(100px, 1fr));
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(32, 22, 22, 0.514);
 }
 
+.back_img{
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  background-size: cover;
+  width: 100%;
+  filter: blur(4.5px);
+}
 
+.back_grad{
+  background: radial-gradient(41.72% 41.72% at 50% 47.59%, rgba(0, 0, 0, 0) 1.35%, rgba(0, 0, 0, 0.099) 1.36%, rgba(0, 0, 0, 0.77265) 99.99%, rgba(0, 0, 0, 0.774) 100%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+}
 
 .item-info{
-  color: white;
+  color: #344054;
 }
 
 .course-outline-tab{
   padding-left: 50px;
   padding-right: 50px;
-  background: #0D0F12;
-  color:white;
+  background: #FFF;
+  color:#344054;
 }
 
 .course_details_left{
   display:flex;
   flex-direction:column;
+  position: absolute !important;
+  z-index: 3;
 
 }
 
@@ -443,7 +463,6 @@
 
 .course_total_time{
   font-size:12px;
-  line-height: 29.64px;
 
 }
 .course_seperator{
@@ -456,17 +475,17 @@
   display: grid;
   align-items: end;
   justify-content: center;
+  position: absolute !important;
+  right:20px;
+  bottom:10px;
+  z-index: 3;
 }
+
 .course_expand_section{
   display:flex;
   justify-content: space-between;
 }
-.course_overview_title{
-  font-family:'Inter';
-  font-size:24px;
-  font-weight:600px;
-  color:#1D2939;
-}
+
 .course_overview_description{
   line-break: loose;
   font-size: 16px;
@@ -491,7 +510,7 @@
   line-height: 30px;
   display: flex;
   align-items: center;
-  color: #36BFFA;
+  color: #1D2939;
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -499,33 +518,31 @@
 
   .collapsible-trigger{
     padding: 0.75rem 1.25rem !important;
-    background: #181C20 !important;
-    color: white !important;
-    border-left: 4px solid #36BFFA !important;
+    background: #FFF !important;
+    color: #344054 important;
     box-shadow: 0px 0px 12px -2px rgba(16, 24, 40, 0.1), 0px 1px 8px -2px rgba(16, 24, 40, 0.06) !important;
-    border-radius: 0px 4px 4px 0px !important;
-  }
+      }
   .collapsible-card-lg {
     position: relative;
     display: flex;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #0D0F12 !important;
+    background-color: #FFF !important;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.375rem;
+    border-left: 4px solid #014384;
   }
-  .alert-info {
-    color: white !important;
-    background-color: #181C20 !important;
+  .alert-info {  
+    color: #344054 !important;
+    background-color: #FFF !important;
     border-color: #75acca !important;
     box-shadow: 0px 0px 12px -2px rgba(16, 24, 40, 0.1), 0px 1px 8px -2px rgba(16, 24, 40, 0.06) !important;
   }
 
   .align-middle {
     vertical-align: middle !important;
-    color: white !important;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
@@ -555,7 +572,7 @@
     gap: 8.52px;
     width: 343px;
     height: 35px;
-    border-bottom: 1px solid #333333 !important;
+    border-bottom: 1px solid #D0D5DD !important;
 
   }
 
@@ -567,7 +584,7 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 30px;
-    color: #D0D5DD;
+    color: #475467;
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -581,7 +598,7 @@
       font-weight: 600;
       font-size: 16px;
       line-height: 30px;
-      color: #98A2B3;
+      color: #475467;
       flex: none;
       order: 1;
       flex-grow: 0;
@@ -594,51 +611,134 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: 24px !important;
+    font-size: 22px !important;
     line-height: 30px;
     display: flex;
     align-items: center;
-    color: #36BFFA !important;
-    padding-bottom: 10px;
-
-
+    padding: 1.5rem 0rem;
+    color:#1D2939;
   }
-
+  .course_duration{
+    display: flex;
+    flex-direction: column;
+  }
   .course_descrip{
     width: 343px;
     height: 210px;
-
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 30px;
     text-align: justify;
-    color: #D0D5DD;
+    color: #344054;
     flex: none;
     order: 0;
     flex-grow: 1;
   }
-
+  .course_tree_desc{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: justify;
+    color: #344054;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+  }
   .learning-header{
     height: 55px !important;
   background: linear-gradient(98.94deg, #02407C -10.01%, #0192D9 107.52%) !important;
   box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.1), 0px 2px 4px -2px rgba(16, 24, 40, 0.06) !important;
   }
 
-  .d-block, .align-middle{
-    display: block !important;
-    color: white !important;
-    font-size: 15px !important;}
-
+ 
   .subsection_course{
-    border-bottom: 1px solid #333333 !important;
+    border-bottom: 1px solid #D0D5DD;
   }
 
   .course_tools_section{
     height:300px;
   }
 
+  .custom_sidebar{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+    left: 1227px;
+    top: 144px;
+    background: #FFFFFF;
+    box-shadow: 0px 11px 25px rgba(16, 24, 40, 0.1);
+    border-radius: 15px;
+
+
+  }
+  .left_section_course{
+    padding-top:8px;
+    box-shadow: 0px 0px 12px -2px rgba(16,24,40,0.1), 0px 1px 8px -2px rgba(16, 24, 40, 0.06);
+  }
+  .hr_course{
+    border-top: 1px solid #D0D5DD;
+  }
+  .course_mark_icon{
+    height: 20px !important;
+  }
+
+  a{
+    color:#344054 !important;
+  }
+  .bookmark_icn{
+    color:#fff !important;
+  }
+  .bookmark_icn:hover {
+    text-decoration: none !important;
+    cursor: pointer;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .video_screens{
+    min-height: 500px;
+    min-width: 100%;
+    border:1px solid red;
+  }
+  .video_desc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hands-on-lab{
+    width: 100%;
+  }
+
+  .course_navbar{
+    display: flex;
+    flex-direction: row;
+  }
 // Import component-specific sass files
 @import "courseware/course/celebration/CelebrationModal.scss";
 @import "courseware/course/sidebar/sidebars/notifications/NotificationIcon.scss";

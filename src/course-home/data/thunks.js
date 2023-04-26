@@ -12,6 +12,7 @@ import {
   postDismissWelcomeMessage,
   postRequestCert,
   getLiveTabIframe,
+  getCourseImage
 } from './api';
 
 import {
@@ -62,6 +63,20 @@ export function fetchTab(courseId, tab, getTabData, targetUserId) {
         }));
       }
     } catch (e) {
+      dispatch(fetchTabFailure({ courseId }));
+      logError(e);
+    }
+    try {
+      const couserwaremetadata = await getCourseImage(courseId, 'outline');
+      dispatch(addModel({
+        modelType: 'coursedetailsMeta',
+        model: {
+          id: courseId,
+          ...couserwaremetadata
+        },
+      }));
+    }
+    catch (e) {
       dispatch(fetchTabFailure({ courseId }));
       logError(e);
     }

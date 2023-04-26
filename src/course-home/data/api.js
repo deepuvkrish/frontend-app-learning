@@ -112,6 +112,16 @@ function normalizeCourseHomeCourseMetadata(metadata, rootSlug) {
   };
 }
 
+function normalizegetCourseImage(datanew) {
+  const example = camelCaseObject(datanew);
+  return {
+    ...example,
+    courseImage: example.media.image.small,
+    
+    isMasquerading: example.originalUserIsStaff && !example.isStaff,
+  };
+}
+
 export function normalizeOutlineBlocks(courseId, blocks) {
   const models = {
     courses: {},
@@ -197,6 +207,14 @@ export async function getCourseHomeCourseMetadata(courseId, rootSlug) {
 // Just uncomment the next few lines and the immediate 'return' in the function below
 // import { Factory } from 'rosie';
 // import './__factories__';
+
+export async function getCourseImage(courseId, rootSlug) {
+  let url = `${getConfig().LMS_BASE_URL}/api/courseware/course/${courseId}`;
+  url = appendBrowserTimezoneToUrl(url);
+  const { data } = await getAuthenticatedHttpClient().get(url);
+  return normalizegetCourseImage(data, rootSlug);
+}
+
 export async function getDatesTabData(courseId) {
   // return camelCaseObject(Factory.build('datesTabData'));
   const url = `${getConfig().LMS_BASE_URL}/api/course_home/dates/${courseId}`;

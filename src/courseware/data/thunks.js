@@ -1,4 +1,5 @@
 import { logError, logInfo } from '@edx/frontend-platform/logging';
+import { getOutlineTabData } from '../../course-home/data/api';
 import { getCourseHomeCourseMetadata } from '../../course-home/data/api';
 import {
   addModel, addModelsMap, updateModel, updateModels, updateModelsMap,
@@ -30,10 +31,12 @@ export function fetchCourse(courseId) {
       getCourseMetadata(courseId),
       getLearningSequencesOutline(courseId),
       getCourseHomeCourseMetadata(courseId, 'courseware'),
+      getOutlineTabData(courseId)
     ]).then(([
       courseMetadataResult,
       learningSequencesOutlineResult,
-      courseHomeMetadataResult]) => {
+      courseHomeMetadataResult,
+      courseOutlineResult]) => {
       if (courseMetadataResult.status === 'fulfilled') {
         dispatch(addModel({
           modelType: 'coursewareMeta',
@@ -50,6 +53,16 @@ export function fetchCourse(courseId) {
           },
         }));
       }
+      if (courseOutlineResult.status === 'fulfilled') {
+        dispatch(addModel({
+          modelType: 'courseOutlineMeta',
+          model: {
+            id: courseId,
+            ...courseOutlineResult.value,
+          },
+        }));
+      }
+      
 
       if (learningSequencesOutlineResult.status === 'fulfilled') {
         const {

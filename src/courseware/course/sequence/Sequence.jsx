@@ -144,55 +144,54 @@ const Sequence = ({
   };
 
   const defaultContent = (
-    <div className="sequence-container d-inline-flex flex-row">
-      <div className={classNames('sequence w-100', { 'position-relative': shouldDisplayNotificationTriggerInSequence })}>
-        <SequenceNavigation
-          sequenceId={sequenceId}
-          unitId={unitId}
-          className="mb-4"
-          nextSequenceHandler={() => {
-            logEvent('edx.ui.lms.sequence.next_selected', 'top');
-            handleNext();
-          }}
-          onNavigate={(destinationUnitId) => {
-            logEvent('edx.ui.lms.sequence.tab_selected', 'top', destinationUnitId);
-            handleNavigate(destinationUnitId);
-          }}
-          previousSequenceHandler={() => {
-            logEvent('edx.ui.lms.sequence.previous_selected', 'top');
-            handlePrevious();
-          }}
-          goToCourseExitPage={() => goToCourseExitPage()}
-        />
-        {shouldDisplayNotificationTriggerInSequence && <SidebarTriggers />}
+   <div className='container'>
 
-        <div className="unit-container flex-grow-1">
-          <SequenceContent
-            courseId={courseId}
-            gated={gated}
-            sequenceId={sequenceId}
-            unitId={unitId}
-            unitLoadedHandler={handleUnitLoaded}
-          />
-          {unitHasLoaded && (
-          <UnitNavigation
-            sequenceId={sequenceId}
-            unitId={unitId}
-            onClickPrevious={() => {
-              logEvent('edx.ui.lms.sequence.previous_selected', 'bottom');
-              handlePrevious();
-            }}
-            onClickNext={() => {
-              logEvent('edx.ui.lms.sequence.next_selected', 'bottom');
-              handleNext();
-            }}
-            goToCourseExitPage={() => goToCourseExitPage()}
-          />
-          )}
-        </div>
-      </div>
-      <Sidebar />
-    </div>
+          {/* <div className="row w-100 mx-0 my-3 justify-content-between">
+           
+          </div>
+          <div className="video_screens"></div>
+          <div className="video_desc">
+            
+                
+          </div>
+          <div className='hands-on-lab'>
+            
+          </div> */}
+
+            <div className="course_expand_section col-12 p-0">
+              <div role="heading" aria-level="1" className="course_desc_abt">course title
+              </div>
+              <div className="col-12 col-md-auto p-0">
+                <a>Video</a>
+                <a>Discription</a>
+                <a>Hands-on Labs</a>
+
+              </div>
+              
+            </div>
+
+            <div className="sequence-container d-inline-flex flex-row">
+              <div className={classNames('sequence w-100', { 'position-relative': shouldDisplayNotificationTriggerInSequence })}>
+              
+                {shouldDisplayNotificationTriggerInSequence && <SidebarTriggers />}
+
+                <div className="unit-container flex-grow-1">
+                  <SequenceContent
+                    courseId={courseId}
+                    gated={gated}
+                    sequenceId={sequenceId}
+                    unitId={unitId}
+                    unitLoadedHandler={handleUnitLoaded}
+                  />
+                </div>
+              </div>
+              <Sidebar />
+            </div>
+          
+
+   </div>
+
+   
   );
 
   if (sequenceStatus === 'loaded') {

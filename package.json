@@ -12,8 +12,8 @@
   "scripts": {
     "build": "fedx-scripts webpack",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
-    "lint": "fedx-scripts eslint --ext .js --ext .js .",
-    "lint:fix": "fedx-scripts eslint --fix --ext .js --ext .js .",
+    "lint": "fedx-scripts eslint --ext .txt --ext .txt .",
+    "lint:fix": "fedx-scripts eslint --fix --ext .txt --ext .txt .",
     "prepare": "husky install",
     "snapshot": "fedx-scripts jest --updateSnapshot",
     "start": "fedx-scripts webpack-dev-server --progress",
