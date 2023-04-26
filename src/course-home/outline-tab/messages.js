@@ -16,6 +16,12 @@ const messages = defineMessages({
     defaultMessage: 'Casual',
     description: 'A very short description of the least intense of three learning goals',
   },
+  startassess: {
+    id: 'learning.outline.startassess',
+    defaultMessage: 'Start Assessment',
+    description: 'The text for button which starts the assessment',
+  },
+ 
   certAlt: {
     id: 'learning.outline.certificateAlt',
     defaultMessage: 'Example Certificate',

@@ -22,6 +22,7 @@ import { UserMessagesProvider } from './generic/user-messages';
 
 import './index.scss';
 import OutlineTab from './course-home/outline-tab';
+import AssessOutline from './course-home/outline-tab/AssessOutline';
 import { CourseExit } from './courseware/course/course-exit';
 import CoursewareContainer from './courseware';
 import CoursewareRedirectLandingPage from './courseware/CoursewareRedirectLandingPage';
@@ -58,6 +59,11 @@ subscribe(APP_READY, () => {
               <DecodePageRoute path="/course/:courseId/home">
                 <TabContainer tab="outline" fetch={fetchOutlineTab} slice="courseHome">
                   <OutlineTab />
+                </TabContainer>
+              </DecodePageRoute>
+              <DecodePageRoute path="/assessment/:courseId/home">
+                <TabContainer tab="outline" fetch={fetchOutlineTab} slice="courseHome">
+                  <AssessOutline />
                 </TabContainer>
               </DecodePageRoute>
               <DecodePageRoute path="/course/:courseId/live">
