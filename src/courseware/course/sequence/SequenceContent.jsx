@@ -53,6 +53,8 @@ const SequenceContent = ({
   }
 
   return (
+    <>
+      
     <Unit
       courseId={courseId}
       format={sequence.format}
@@ -60,6 +62,7 @@ const SequenceContent = ({
       id={unitId}
       onLoaded={unitLoadedHandler}
     />
+    </>
   );
 };
 

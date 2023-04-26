@@ -63,21 +63,8 @@ const SidebarBase = ({
       {showTitleBar && (
         <>
           <div className="d-flex align-items-center">
-            <span className="p-2.5 d-inline-block">{title}</span>
-            {shouldDisplayFullScreen
-              ? null
-              : (
-                <div className="d-inline-flex mr-2 mt-1.5 ml-auto">
-                  <IconButton
-                    src={Close}
-                    size="sm"
-                    iconAs={Icon}
-                    onClick={() => toggleSidebar(null)}
-                    variant="primary"
-                    alt={intl.formatMessage(messages.closeNotificationTrigger)}
-                  />
-                </div>
-              )}
+            <span className="p-2.5 d-inline-block course_sidebar_tree">{title}</span>
+            
           </div>
           <div className="py-1 bg-gray-100 border-top border-bottom border-light-400" />
         </>

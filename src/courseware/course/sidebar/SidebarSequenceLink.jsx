@@ -8,12 +8,9 @@ import {
   injectIntl,
   intlShape,
 } from '@edx/frontend-platform/i18n';
-import { faCheckCircle as fasCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { faCheckCircle as farCheckCircle } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Icon } from '@edx/paragon';
-import { KeyboardArrowRight } from '@edx/paragon/icons';
+import { KeyboardArrowUp } from '@edx/paragon/icons';
 import { Check } from '@edx/paragon/icons';
 import EffortEstimate from '../../../shared/effort-estimate';
 import { useModel } from '../../../generic/model-store';
@@ -88,7 +85,7 @@ const SidebarSequenceLink = ({
 
   return (
     <li>
-      <div className={classNames('subsection_course', { 'mt-2 pt-2': !first })}>
+      <div className={classNames( { 'mt-2 pt-2': !first })}>
         <div className="row w-100 m-0" style={{ justifyContent: 'space-evenly' }}>
           <div className="col-auto p-0">
           </div>
@@ -100,25 +97,8 @@ const SidebarSequenceLink = ({
             <EffortEstimate className="ml-3 align-middle" block={sequence} />
           </div>
 
-          {complete ? (
-            <Icon
-              src={Check}
-              fixedWidth
-              className="course_mark_icon float-left text-success mt-1"
-              aria-hidden="true"
-              title={intl.formatMessage(messages.completedAssignment)}
-            />
-          ) : (
-            <Icon
-              src={Check}
-              fixedWidth
-              className="course_mark_icon float-left text-gray-400 mt-1"
-              aria-hidden="true"
-              title={intl.formatMessage(messages.incompleteAssignment)}
-            />
-          )}
-          <Icon src={KeyboardArrowRight} />
-
+          
+          <Icon src={KeyboardArrowUp} />
         </div>
         <div className="row w-100 m-0 ml-3 pl-3">
           <small className="text-body pl-2">

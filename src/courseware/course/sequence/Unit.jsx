@@ -142,13 +142,32 @@ const Unit = ({
 
   return (
     <div className="unit">
-      <h1 className="mb-0 h3">{unit.title}</h1>
-      <h2 className="sr-only">{intl.formatMessage(messages.headerPlaceholder)}</h2>
-      <BookmarkButton
-        unitId={unit.id}
-        isBookmarked={unit.bookmarked}
-        isProcessing={unit.bookmarkedUpdateState === 'loading'}
-      />
+      <div className='unit-nav'>
+        <div className="col-6 course-inner-title">
+          <h1 className="mb-0 h3">{unit.title}</h1>
+          <h2 className="sr-only">{intl.formatMessage(messages.headerPlaceholder)}</h2>
+          <BookmarkButton
+            unitId={unit.id}
+            isBookmarked={unit.bookmarked}
+            isProcessing={unit.bookmarkedUpdateState === 'loading'}
+          />
+        </div>
+        <div className="col-6 course-nav-links">
+          <div className="col-3">
+              <a>Video</a>
+          </div>
+          <div className="col-4">
+            <a>Discription</a>
+          </div>
+          <div className="col-5">
+            <a>Hands-on Labs</a>
+          </div>
+        </div>
+      </div>
+     
+
+
+
       {/* TODO: social share exp. Need to remove later */}
       {(window.expSocialShareAboutUrls && window.expSocialShareAboutUrls[unit.id] !== undefined) && (
         <ShareButton url={window.expSocialShareAboutUrls[unit.id]} />

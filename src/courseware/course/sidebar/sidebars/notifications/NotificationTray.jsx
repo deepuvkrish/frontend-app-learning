@@ -54,24 +54,21 @@ const NotificationTray = ({ intl }) => {
       sidebarId={ID}
       className={classNames({ 'h-100': !verifiedMode && !shouldDisplayFullScreen })}
     >
-
-              <ol id="courseware-outline" className="list-unstyled">
-                {courses[rootCourseId].sectionIds.map((sectionId) => (
-                  <SidebarSection
-                    key={sectionId}
-                    courseId={courseId}
-                    defaultOpen={sections[sectionId].resumeBlock}
-                    expand={expandAll}
-                    section={sections[sectionId]}
-                  />
-                ))}
-              </ol>
-         
-
-      <div>
+    <ol id="courseware-outline" className="list-unstyled">
+      {courses[rootCourseId].sectionIds.map((sectionId) => (
+        <SidebarSection
+          key={sectionId}
+          courseId={courseId}
+          defaultOpen={sections[sectionId].resumeBlock}
+          expand={expandAll}
+          section={sections[sectionId]}
+        />
+      ))}
+    </ol>
+    <div>
 
       
-      </div>
+    </div>
     </SidebarBase>
   );
 };

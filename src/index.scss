@@ -279,8 +279,6 @@
   margin-right: auto;
 
   @media (min-width: 830px) {
-    padding-left: 40px;
-    padding-right: 40px;
   }
 }
 
@@ -590,6 +588,7 @@ label.checkbox {
   }
 
   .collapsible-trigger{
+    border-left: 4px solid #014384;
     padding: 0.75rem 1.25rem !important;
     background: #FFF !important;
     color: #344054 important;
@@ -605,7 +604,6 @@ label.checkbox {
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.375rem;
-    border-left: 4px solid #014384;
   }
   .alert-info {  
     color: #344054 !important;
@@ -621,6 +619,14 @@ label.checkbox {
     font-weight: 600;
     font-size: 20px;
     line-height: 30px;;
+  }
+  .align-middle-sidebar {
+    vertical-align: middle !important;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 0px;
   }
 
   .course_auth_list{
@@ -720,6 +726,16 @@ label.checkbox {
     order: 0;
     flex-grow: 1;
   }
+
+  .course_sidebar_tree{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    color: #1D2939;
+    flex: none;
+  }
+
   .learning-header{
     height: 55px !important;
   background: linear-gradient(98.94deg, #02407C -10.01%, #0192D9 107.52%) !important;
@@ -772,9 +788,22 @@ label.checkbox {
     cursor: pointer;
   }
 
+  .unit-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
-
-
+  .course-nav-links{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    text-align:end;
+  }
+  
+  .course-nav-links a{
+    cursor: pointer;
+  }
 
 
 

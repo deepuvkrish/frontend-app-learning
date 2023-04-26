@@ -146,27 +146,10 @@ const Sequence = ({
   const defaultContent = (
    <div className='container'>
 
-          {/* <div className="row w-100 mx-0 my-3 justify-content-between">
-           
-          </div>
-          <div className="video_screens"></div>
-          <div className="video_desc">
-            
-                
-          </div>
-          <div className='hands-on-lab'>
-            
-          </div> */}
-
             <div className="course_expand_section col-12 p-0">
-              <div role="heading" aria-level="1" className="course_desc_abt">course title
-              </div>
-              <div className="col-12 col-md-auto p-0">
-                <a>Video</a>
-                <a>Discription</a>
-                <a>Hands-on Labs</a>
-
-              </div>
+              {/* <div role="heading" aria-level="1" className="course_desc_abt">course title loaded here
+              </div> */}
+            
               
             </div>
 
@@ -176,6 +159,7 @@ const Sequence = ({
                 {shouldDisplayNotificationTriggerInSequence && <SidebarTriggers />}
 
                 <div className="unit-container flex-grow-1">
+
                   <SequenceContent
                     courseId={courseId}
                     gated={gated}

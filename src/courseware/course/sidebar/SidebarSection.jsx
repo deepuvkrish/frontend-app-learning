@@ -4,7 +4,7 @@ import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Collapsible, IconButton, Icon } from '@edx/paragon';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-import { KeyboardArrowRight } from '@edx/paragon/icons';
+import { KeyboardArrowUp } from '@edx/paragon/icons';
 import { KeyboardArrowDown } from '@edx/paragon/icons';
 import SidebarSequenceLink from './SidebarSequenceLink';
 import { useModel } from '../../../generic/model-store';
@@ -46,7 +46,7 @@ const SidebarSection = ({
   const sectionTitle = (
     <div className="row w-100 m-0">
       <div className="col-10 ml-3 p-0 font-weight-bold text-dark-500">
-        <span className="align-middle">{title}</span>
+        <span className="align-middle-sidebar">{title}</span>
         <span className="sr-only">
           , {intl.formatMessage(complete ? messages.completedSection : messages.incompleteSection)}
         </span>
@@ -65,7 +65,7 @@ const SidebarSection = ({
         onToggle={() => { setOpen(!open); }}
         iconWhenClosed={(
           <Icon 
-            src={KeyboardArrowRight}
+            src={KeyboardArrowUp}
             alt={intl.formatMessage(messages.openSection)}
             icon={faPlus}
             onClick={() => { setOpen(true); }}
