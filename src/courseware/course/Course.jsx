@@ -73,7 +73,7 @@ const Course = ({
       setSessionStorage(`notificationTrayStatus.${courseId}`, 'open');
     } else {
       // responsive version displays the tray closed on initial load, set the sessionStorage to closed
-      setSessionStorage(`notificationTrayStatus.${courseId}`, 'closed');
+      setSessionStorage(`notificationTrayStatus.${courseId}`, 'open');
     }
   }
 
@@ -113,6 +113,7 @@ const Course = ({
       <SidebarProvider courseId={courseId} unitId={unitId}>
         <Helmet>
           <title>{`${pageTitleBreadCrumbs.join(' | ')} | ${getConfig().SITE_NAME}`}</title>
+          
         </Helmet>
         <div className="position-relative d-flex align-items-start">
           

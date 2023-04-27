@@ -55,6 +55,7 @@ const SidebarBase = ({
           alt={intl.formatMessage(messages.responsiveCloseNotificationTray)}
         >
           <Icon src={ArrowBackIos} />
+          
           <span className="font-weight-bold m-2 d-inline-block">
             {intl.formatMessage(messages.responsiveCloseNotificationTray)}
           </span>

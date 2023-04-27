@@ -18,7 +18,9 @@ const SidebarProvider = ({
   const { verifiedMode } = useModel('courseHomeMeta', courseId);
   const shouldDisplayFullScreen = useWindowSize().width < breakpoints.large.minWidth;
   const shouldDisplaySidebarOpen = useWindowSize().width > breakpoints.medium.minWidth;
+
   const showNotificationsOnLoad = getSessionStorage(`notificationTrayStatus.${courseId}`) !== 'closed';
+
   const query = new URLSearchParams(window.location.search);
   if (query.get('sidebar') === 'true') {
     localStorage.setItem('showDiscussionSidebar', true);
@@ -31,7 +33,9 @@ const SidebarProvider = ({
     ? SIDEBARS.DISCUSSIONS.ID
     : showNotificationSidebar;
   const [currentSidebar, setCurrentSidebar] = useState(initialSidebar);
+
   const [notificationStatus, setNotificationStatus] = useState(getLocalStorage(`notificationStatus.${courseId}`));
+  
   const [upgradeNotificationCurrentState, setUpgradeNotificationCurrentState] = useState(getLocalStorage(`upgradeNotificationCurrentState.${courseId}`));
 
   useEffect(() => {

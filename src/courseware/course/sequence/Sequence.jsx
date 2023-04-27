@@ -145,7 +145,6 @@ const Sequence = ({
 
   const defaultContent = (
    <div className='container'>
-
             <div className="course_expand_section col-12 p-0">
               {/* <div role="heading" aria-level="1" className="course_desc_abt">course title loaded here
               </div> */}
@@ -157,7 +156,7 @@ const Sequence = ({
               <div className={classNames('sequence w-100', { 'position-relative': shouldDisplayNotificationTriggerInSequence })}>
               
                 {shouldDisplayNotificationTriggerInSequence && <SidebarTriggers />}
-
+                
                 <div className="unit-container flex-grow-1">
 
                   <SequenceContent
