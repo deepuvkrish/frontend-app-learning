@@ -148,8 +148,6 @@ const Sequence = ({
             <div className="course_expand_section col-12 p-0">
               {/* <div role="heading" aria-level="1" className="course_desc_abt">course title loaded here
               </div> */}
-            
-              
             </div>
 
             <div className="sequence-container d-inline-flex flex-row">

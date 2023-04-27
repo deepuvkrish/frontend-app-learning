@@ -65,10 +65,6 @@ const NotificationTray = ({ intl }) => {
         />
       ))}
     </ol>
-    <div>
-
-      
-    </div>
     </SidebarBase>
   );
 };

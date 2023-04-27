@@ -92,30 +92,12 @@ const Course = ({
     <div className='container-fluid'>
 
 
-      {/* Background image */}
-      {/* <div className="grid row">
-          <div className="course_details_left col-xl-8 col-md-8 col-sm-8">
-            <div className="course_title_description">
-              <span className="course_title_name">{title}</span>
-
-            </div>
-            <div className="position-relative d-flex align-items-start">
-              <CourseBreadcrumbs
-                courseId={courseId}
-                sectionId={section ? section.id : null}
-                sequenceId={sequenceId}
-                isStaff={isStaff}
-                unitId={unitId}
-              />
-            </div>             
-          </div>
-      </div> */}
       <SidebarProvider courseId={courseId} unitId={unitId}>
         <Helmet>
           <title>{`${pageTitleBreadCrumbs.join(' | ')} | ${getConfig().SITE_NAME}`}</title>
           
         </Helmet>
-        <div className="position-relative d-flex align-items-start">
+        <div className="position-relative d-flex align-items-start" style={{visibility:"hidden"}}>
           
           {shouldDisplayTriggers && (
             <SidebarTriggers />

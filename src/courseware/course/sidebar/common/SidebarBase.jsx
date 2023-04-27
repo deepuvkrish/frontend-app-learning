@@ -39,7 +39,7 @@ const SidebarBase = ({
       className={classNames('ml-0 ml-lg-4 border border-light-400 rounded-sm h-auto align-top custom_sidebar', {
         'bg-white m-0 border-0 fixed-top vh-100 rounded-0': shouldDisplayFullScreen,
         'min-vh-100': !shouldDisplayFullScreen,
-        'd-none': currentSidebar !== sidebarId,
+        'd-flex': currentSidebar !== sidebarId,
       }, className)}
       data-testid={`sidebar-${sidebarId}`}
       style={{ width: shouldDisplayFullScreen ? '100%' : width }}
