@@ -161,7 +161,7 @@ const OutlineTab = ({
         {/* Background image added here  */}
         <div className="grid row">
           <div className="back_grad">
-
+            <div className='radial_grad'></div>
             <img src={courseImage} className='back_img'/> 
             
 
@@ -169,7 +169,7 @@ const OutlineTab = ({
             <div className="course_details_left col-xl-8 col-md-8 col-sm-8">
               <div className="course_title_description">
                 <span className="course_title_name">{title}</span>
-                <span>{shortDescription}</span>
+                <span className="course_title_short_description">{shortDescription}</span>
                 
               
               </div>

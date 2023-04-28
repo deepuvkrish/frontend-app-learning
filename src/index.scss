@@ -40,7 +40,7 @@
 .course-tabs-navigation {
   z-index: 5;
   position: relative;
-  background: #FFF;
+  background: #ffffff00;
   color: #344054;
 
 
@@ -565,12 +565,19 @@ label.checkbox {
 
 
 .text-bread-crumbs{
-  color:white !important;
+  color:rgb(18, 18, 18) !important;
 }
 .bread-crumbs-ico{
-  color: white !important;
+  color: rgb(42, 36, 36) !important;
 }
 
+.radial_grad{
+  background: radial-gradient(23.72% 23.72% at 50% 47.59%, rgba(0, 0, 0, 0) 1.35%, rgba(0, 0, 0, 0.099) 1.36%, rgba(0, 0, 0, 0.77265) 99.99%, rgba(0, 0, 0, 0.774) 100%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+}
 .course_desc_abt{
   width: 400px;
   height: 30px;
@@ -764,7 +771,6 @@ label.checkbox {
     box-shadow: 0px 11px 25px rgba(16, 24, 40, 0.1);
     border-radius: 15px;
 
-
   }
   .left_section_course{
     padding-top:8px;
@@ -810,7 +816,10 @@ label.checkbox {
   }
 
 
-
+.course_title_short_description{
+  font-family:"poppins";
+  font-size:"14px";
+}
 
 
 

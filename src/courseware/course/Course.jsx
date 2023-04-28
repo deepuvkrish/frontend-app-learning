@@ -7,7 +7,6 @@ import { breakpoints, useWindowSize } from '@edx/paragon';
 import { Button, Icon } from '@edx/paragon';
 import { CalendarMonth, BookmarkAdd } from '@edx/paragon/icons';
 import { AlertList } from '../../generic/user-messages';
-
 import Sequence from './sequence';
 
 import { CelebrationModal, shouldCelebrateOnSectionLoad, WeeklyGoalCelebrationModal } from './celebration';
@@ -97,11 +96,18 @@ const Course = ({
           <title>{`${pageTitleBreadCrumbs.join(' | ')} | ${getConfig().SITE_NAME}`}</title>
           
         </Helmet>
-        <div className="position-relative d-flex align-items-start" style={{visibility:"hidden"}}>
-          
+        <div className="position-relative d-flex align-items-start">
+        <CourseBreadcrumbs
+          courseId={courseId}
+          sectionId={section ? section.id : null}
+          sequenceId={sequenceId}
+          isStaff={isStaff}
+          unitId={unitId}
+          />
+{/*           
           {shouldDisplayTriggers && (
             <SidebarTriggers />
-          )}
+          )} */}
         </div>
 
         <AlertList topic="sequence" />
