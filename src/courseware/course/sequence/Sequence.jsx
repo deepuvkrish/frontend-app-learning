@@ -166,7 +166,7 @@ const Sequence = ({
                   />
                 </div>
               </div>
-              <Sidebar />
+              <Sidebar /> 
             </div>
           
 

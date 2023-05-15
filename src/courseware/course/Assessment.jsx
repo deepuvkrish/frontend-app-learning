@@ -1,0 +1,170 @@
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+import { useDispatch } from 'react-redux';
+import { getConfig } from '@edx/frontend-platform';
+import { breakpoints, useWindowSize } from '@edx/paragon';
+import { Button, Icon } from '@edx/paragon';
+import { CalendarMonth, BookmarkAdd } from '@edx/paragon/icons';
+import { AlertList } from '../../generic/user-messages';
+import AssessSequence from './sequence/AssessSequence';
+
+import { CelebrationModal, shouldCelebrateOnSectionLoad, WeeklyGoalCelebrationModal } from './celebration';
+import ContentTools from './content-tools';
+import CourseBreadcrumbs from './CourseBreadcrumbs';
+import SidebarProvider from './sidebar/SidebarContextProvider';
+import SidebarTriggers from './sidebar/SidebarTriggers';
+
+import { useModel } from '../../generic/model-store';
+import { getSessionStorage, setSessionStorage } from '../../data/sessionStorage';
+
+const Assessment = ({
+  courseId,
+  sequenceId,
+  unitId,
+  nextSequenceHandler,
+  previousSequenceHandler,
+  unitNavigationHandler,
+  windowWidth,
+}) => {
+  const course = useModel('coursewareMeta', courseId);
+
+
+
+  const {
+    celebrations,
+    originalUserIsStaff,
+    isSelfPaced,
+    isStaff,
+    org,
+    tabs,
+    title,
+    userTimezone,
+  } = useModel('courseHomeMeta', courseId);
+
+  const sequence = useModel('sequences', sequenceId);
+  const section = useModel('sections', sequence ? sequence.sectionId : null);
+
+  const pageTitleBreadCrumbs = [
+    sequence,
+    section,
+    course,
+  ].filter(element => element != null).map(element => element.title);
+
+  // Below the tabs, above the breadcrumbs alerts (appearing in the order listed here)
+  const dispatch = useDispatch();
+
+  const [firstSectionCelebrationOpen, setFirstSectionCelebrationOpen] = useState(false);
+  // If streakLengthToCelebrate is populated, that modal takes precedence. Wait til the next load to display
+  // the weekly goal celebration modal.
+  const [weeklyGoalCelebrationOpen, setWeeklyGoalCelebrationOpen] = useState(
+    celebrations && !celebrations.streakLengthToCelebrate && celebrations.weeklyGoal,
+  );
+  const shouldDisplayTriggers = windowWidth >= breakpoints.small.minWidth;
+  const daysPerWeek = course?.courseGoals?.selectedGoal?.daysPerWeek;
+
+  // Responsive breakpoints for showing the notification button/tray
+  const shouldDisplayNotificationTrayOpenOnLoad = windowWidth > breakpoints.medium.minWidth;
+
+  // Course specific notification tray open/closed persistance by browser session
+  if (!getSessionStorage(`notificationTrayStatus.${courseId}`)) {
+    if (shouldDisplayNotificationTrayOpenOnLoad) {
+      setSessionStorage(`notificationTrayStatus.${courseId}`, 'open');
+    } else {
+      // responsive version displays the tray closed on initial load, set the sessionStorage to closed
+      setSessionStorage(`notificationTrayStatus.${courseId}`, 'open');
+    }
+  }
+
+  useEffect(() => {
+    const celebrateFirstSection = celebrations && celebrations.firstSection;
+    setFirstSectionCelebrationOpen(shouldCelebrateOnSectionLoad(
+      courseId,
+      sequenceId,
+      celebrateFirstSection,
+      dispatch,
+      celebrations,
+    ));
+  }, [sequenceId]);
+
+  return (
+    <div className='container-fluid'>
+
+
+      <SidebarProvider courseId={courseId} unitId={unitId}>
+        <Helmet>
+          <title>{`${pageTitleBreadCrumbs.join(' | ')} | ${getConfig().SITE_NAME}`}</title>
+          
+        </Helmet>
+        <div className="position-relative d-flex align-items-start">
+        <CourseBreadcrumbs
+          courseId={courseId}
+          sectionId={section ? section.id : null}
+          sequenceId={sequenceId}
+          isStaff={isStaff}
+          unitId={unitId}
+          />
+          {/*           
+          {shouldDisplayTriggers && (
+            <SidebarTriggers />
+          )} */}
+        </div>
+
+        <AlertList topic="sequence" />
+        
+        <AssessSequence
+          unitId={unitId}
+          sequenceId={sequenceId}
+          courseId={courseId}
+          unitNavigationHandler={unitNavigationHandler}
+          nextSequenceHandler={nextSequenceHandler}
+          previousSequenceHandler={previousSequenceHandler}
+        />
+        <CelebrationModal
+          courseId={courseId}
+          isOpen={firstSectionCelebrationOpen}
+          onClose={() => setFirstSectionCelebrationOpen(false)}
+        />
+        <WeeklyGoalCelebrationModal
+          courseId={courseId}
+          daysPerWeek={daysPerWeek}
+          isOpen={weeklyGoalCelebrationOpen}
+          onClose={() => setWeeklyGoalCelebrationOpen(false)}
+        />
+        <ContentTools course={course} />
+      </SidebarProvider>
+    </div>
+  );
+};
+
+Assessment.propTypes = {
+  courseId: PropTypes.string,
+  sequenceId: PropTypes.string,
+  unitId: PropTypes.string,
+  nextSequenceHandler: PropTypes.func.isRequired,
+  previousSequenceHandler: PropTypes.func.isRequired,
+  unitNavigationHandler: PropTypes.func.isRequired,
+  windowWidth: PropTypes.number.isRequired,
+};
+
+Assessment.defaultProps = {
+  courseId: null,
+  sequenceId: null,
+  unitId: null,
+};
+
+const CourseWrapper = (props) => {
+  // useWindowSize initially returns an undefined width intentionally at first.
+  // See https://www.joshwcomeau.com/react/the-perils-of-rehydration/ for why.
+  // But <Course> has some tricky window-size-dependent, session-storage-setting logic and React would yell at us if
+  // we exited that component early, before hitting all the useState() calls.
+  // So just skip all that until we have a window size available.
+  const windowWidth = useWindowSize().width;
+  if (windowWidth === undefined) {
+    return null;
+  }
+
+  return <Assessment {...props} windowWidth={windowWidth} />;
+};
+
+export default CourseWrapper;

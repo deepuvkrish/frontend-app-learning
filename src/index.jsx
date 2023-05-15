@@ -25,6 +25,7 @@ import OutlineTab from './course-home/outline-tab';
 import AssessOutline from './course-home/outline-tab/AssessOutline';
 import { CourseExit } from './courseware/course/course-exit';
 import CoursewareContainer from './courseware';
+import AssesswareContainer from './courseware/AssesswareContainer';
 import CoursewareRedirectLandingPage from './courseware/CoursewareRedirectLandingPage';
 import DatesTab from './course-home/dates-tab';
 import GoalUnsubscribe from './course-home/goal-unsubscribe';
@@ -108,6 +109,14 @@ subscribe(APP_READY, () => {
                   '/course/:courseId',
                 ]}
                 component={CoursewareContainer}
+              />
+              <DecodePageRoute
+                path={[
+                  '/assessment/:courseId/:sequenceId/:unitId',
+                  '/assessment/:courseId/:sequenceId',
+                  '/assessment/:courseId',
+                ]}
+                component={AssesswareContainer}
               />
             </Switch>
           </UserMessagesProvider>
