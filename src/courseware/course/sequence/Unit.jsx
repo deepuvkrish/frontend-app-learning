@@ -143,7 +143,7 @@ const Unit = ({
   return (
     <div className="unit">
       <div className='unit-nav'>
-        <div className="col-6 course-inner-title">
+        <div className="col-6 mt-2 course-inner-title">
           <h1 className="mb-0 h3">{unit.title}</h1>
           <h2 className="sr-only">{intl.formatMessage(messages.headerPlaceholder)}</h2>
           <BookmarkButton
@@ -152,12 +152,12 @@ const Unit = ({
             isProcessing={unit.bookmarkedUpdateState === 'loading'}
           />
         </div>
-        <div className="col-6 course-nav-links">
+        <div className="col-6 mt-2 course-nav-links">
           <div className="col-3">
               <a>Video</a>
           </div>
           <div className="col-4">
-            <a>Discription</a>
+            <a>Description</a>
           </div>
           <div className="col-5">
             <a>Hands-on Labs</a>

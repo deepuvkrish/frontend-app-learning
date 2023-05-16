@@ -244,7 +244,7 @@ const OutlineTab = ({
                 <div role="heading" aria-level="1" className="course_desc_abt">About the Course
                 </div>
                 <div className="col-12 col-md-auto p-0">
-                  <Button variant="outline-primary" block onClick={() => { setExpandAll(!expandAll); }} style={{ border: 'none' }}>
+                  <Button className="expandBtn" block onClick={() => { setExpandAll(!expandAll); }} style={{ border: 'none', color:'#000' }}>
                     {expandAll ? intl.formatMessage(messages.collapseAll) : intl.formatMessage(messages.expandAll)}
                   </Button>
                 </div>
@@ -327,7 +327,6 @@ const OutlineTab = ({
                 </div>
                 </section>
 
-            <CourseHandouts />
             <section className="mb-4">
               <span className="course_overview_title">{intl.formatMessage(messages.handouts)}</span>
               <span className="course_descrip">{shortDescription}</span>

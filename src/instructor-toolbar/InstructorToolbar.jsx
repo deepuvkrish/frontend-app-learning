@@ -66,7 +66,7 @@ const InstructorToolbar = (props) => {
   const courseStartDateMasqueradeBanner = useCourseStartMasqueradeBanner(courseId, tab);
 
   return (!didMount ? null : (
-    <div data-testid="instructor-toolbar">
+    <div data-testid="instructor-toolbar" className='instructorToolbar'>
       <div className="bg-primary text-white">
         <div className="container-xl py-3 d-md-flex justify-content-end align-items-start">
           <div className="align-items-center flex-grow-1 d-md-flex mx-1 my-1">

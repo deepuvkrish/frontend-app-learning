@@ -36,7 +36,7 @@ const DateSummary = ({
     <li className="p-0 mb-3 small">
       <div className="row">
       {/* Date formatted */}
-        <div className="ml-1 font-weight-bold" style={{ fontSize: '14px' }}>
+        <div className="startEndTime">
           <FormattedDate
             value={dateBlock.date}
             day="numeric"

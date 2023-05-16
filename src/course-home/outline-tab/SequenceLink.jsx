@@ -92,7 +92,7 @@ const SequenceLink = ({
         <div className="row w-100 m-0" style={{ justifyContent: 'space-evenly' }}>
           <div className="col-auto p-0">
           </div>
-          <div className="col-10 p-0 ml-3 text-break">
+          <div className="col-10 p-0 ml-3 text-breakz">
             <span >{displayTitle}</span>
             <span className="sr-only">
               , {intl.formatMessage(complete ? messages.completedAssignment : messages.incompleteAssignment)}

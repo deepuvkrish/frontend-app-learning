@@ -45,6 +45,7 @@ const LoadedTabPage = ({
     paddingLeft: '0px',
     marginRight: 'auto',
     marginLeft: 'auto',
+    paddingBottom:'150px',
   };
 
   return (
