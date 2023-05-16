@@ -24,7 +24,7 @@ import React, {
   import messages from './messages';
   import HiddenAfterDue from './hidden-after-due';
   import { SequenceNavigation, UnitNavigation } from './sequence-navigation';
-  import SequenceContent from './SequenceContent';
+  import AssessSequenceContent from './AssessSequenceContent';
   
   const AssessSequence = ({
     unitId,
@@ -157,7 +157,7 @@ import React, {
                   
                   <div className="unit-container flex-grow-1">
   
-                    <SequenceContent
+                    <AssessSequenceContent
                       courseId={courseId}
                       gated={gated}
                       sequenceId={sequenceId}

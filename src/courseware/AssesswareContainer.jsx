@@ -15,7 +15,7 @@ import {
 } from './data';
 import { TabPage } from '../tab-page';
 
-import Assessment from './course';
+import Assessment from './course/Assessment';
 import { handleNextSectionCelebration } from './course/celebration';
 
 // Look at where this is called in componentDidUpdate for more info about its usage
@@ -142,7 +142,7 @@ class AssesswareContainer extends Component {
       this.props.fetchSequence(sequenceId);
     }
   });
-
+  
   componentDidMount() {
     const {
       match: {
@@ -294,7 +294,7 @@ class AssesswareContainer extends Component {
         },
       },
     } = this.props;
-
+    console.log(routeUnitId);
     return (
       <TabPage
         activeTabSlug="courseware"

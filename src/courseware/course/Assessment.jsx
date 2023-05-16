@@ -29,6 +29,7 @@ const Assessment = ({
 }) => {
   const course = useModel('coursewareMeta', courseId);
 
+  console.log("hello");
 
 
   const {
@@ -97,13 +98,13 @@ const Assessment = ({
           
         </Helmet>
         <div className="position-relative d-flex align-items-start">
-        <CourseBreadcrumbs
+        {/* <CourseBreadcrumbs
           courseId={courseId}
           sectionId={section ? section.id : null}
           sequenceId={sequenceId}
           isStaff={isStaff}
           unitId={unitId}
-          />
+          /> */}
           {/*           
           {shouldDisplayTriggers && (
             <SidebarTriggers />
@@ -153,7 +154,7 @@ Assessment.defaultProps = {
   unitId: null,
 };
 
-const CourseWrapper = (props) => {
+const AssessWrapper = (props) => {
   // useWindowSize initially returns an undefined width intentionally at first.
   // See https://www.joshwcomeau.com/react/the-perils-of-rehydration/ for why.
   // But <Course> has some tricky window-size-dependent, session-storage-setting logic and React would yell at us if
@@ -167,4 +168,4 @@ const CourseWrapper = (props) => {
   return <Assessment {...props} windowWidth={windowWidth} />;
 };
 
-export default CourseWrapper;
+export default AssessWrapper;
