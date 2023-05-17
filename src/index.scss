@@ -937,7 +937,10 @@ label.checkbox {
 
 
 
-
+.assessmentSection{
+  padding-left: 40px;
+  padding-right: 40px;
+}
 
 
 
@@ -1188,6 +1191,7 @@ label.checkbox {
     flex-direction: row;
   }
   .start_assessment{
+    color:#fff !important;
     width: 250px;
     height: 61px;
     background: linear-gradient(98.94deg, #014384 -10.01%, #0192D9 107.52%);
@@ -1198,11 +1202,7 @@ label.checkbox {
     font-weight: 700;
     font-size: 20px;
     line-height: 30px;
-    border: none !important;
- 
- 
- 
- 
+    border: none !important; 
     margin-left: 0 !important;
     left: -40px !important;
     position: relative !important;
