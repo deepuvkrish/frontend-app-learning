@@ -8,6 +8,7 @@ import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
 import { Button, Icon } from '@edx/paragon';
 import { CalendarMonth, BookmarkAdd } from '@edx/paragon/icons';
+import { Timer } from '@edx/paragon/icons';
 
 import { AlertList } from '../../generic/user-messages';
 
@@ -205,8 +206,12 @@ const OutlineTab = ({
                     </ol>
                   </div>
                   <div className="course_duration col-3">
-                  <span>Duration</span>
-                  <span className="course_total_time">1 hour 30 minutes </span>
+                    <div className="course_time_icon">
+                    <Icon src={Timer} />Duration
+                    </div>
+                    <ol className="list-unstyled" style={{ marginLeft: '10px;' }}>
+                      <span className="course_total_time">1 hour 30 minutes </span>
+                    </ol>
                 </div>
                 </div>
                 <div className="course_bookmark col-3">
