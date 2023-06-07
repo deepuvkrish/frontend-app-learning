@@ -2,8 +2,590 @@
 @import "~@edx/brand/paragon/variables";
 @import "~@edx/paragon/scss/core/core";
 @import "~@edx/brand/paragon/overrides";
-
 @import "~@edx/frontend-component-footer/dist/footer";
+
+// Small tablets and large smartphones
+$screen-sm-min: 470px;
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+// Tablets and small desktops
+$screen-lg-min: 992px;
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+
+// Small devices
+@mixin sm {
+  @media (max-width: #{$screen-sm-min}) {
+      @content;
+  }
+}
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+      @content;
+  }
+}
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+      @content;
+  }
+}
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+      @content;
+  }
+}
+// Custom devices
+@mixin rwd($screen) {
+  @media (min-width: #{$screen+'px'}) {
+      @content;
+  }
+}
+
+.learning-header {
+  @include sm {
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    height: 60px !important;
+    background: linear-gradient(98.94deg, #02407C -10.01%, #0192D9 107.52%) !important;
+    box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.1), 0px 2px 4px -2px rgba(16, 24, 40, 0.06) !important;
+
+  }
+  @include lg{
+    height: 55px !important;
+    background: linear-gradient(98.94deg, #02407C -10.01%, #0192D9 107.52%) !important;
+    box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.1), 0px 2px 4px -2px rgba(16, 24, 40, 0.06) !important;
+  }
+}
+
+.btn-outline-primary {
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+.btn-outline-primary.dropdown-toggle {
+  color: #ffffff;
+  background-color: #f0f3f500 !important;
+}
+.grid {
+  @include sm {
+    position: relative;
+    min-height:200px;
+    display: block;
+    color:white;
+    object-fit: cover;
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    background-color: rgba(32, 22, 22, 0.514);
+  }
+  @include lg {
+    position: relative;
+    min-height:370px;
+    display: block;
+    color:white;
+    object-fit: cover;
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    background-color: rgba(32, 22, 22, 0.514);   
+  }
+  
+}
+.course_title_name{
+  @include sm {
+    font-size: 15px;
+    font-family: inter;
+    font-weight: 600;
+    padding-bottom: 5px;
+    font-family: "Inter", sans-serif;
+  }
+  @include lg {
+    font-size: 30px;
+    font-family: inter;
+    font-weight: 600;
+    padding-bottom: 5px;
+    font-family: 'Inter', sans-serif;
+ }
+}
+
+.course_title_short_description{
+  @include sm {
+    font-family: "poppins";
+    font-size: 10px !important;
+  }
+
+  @include lg {
+    font-family:"poppins";
+    font-size:14px;
+ }
+}
+
+.course_title_description{
+  @include sm {
+    display: grid;
+    align-content: end;
+    min-height: 45%;
+    padding: 5px;
+    font-family: "Inter", sans-serif;    
+  }
+
+  @include lg {
+    display: grid;
+    align-content: end;
+    min-height: 70%;
+    padding:40px;
+    font-family: 'Inter', sans-serif;      
+ }
+}
+
+.course_title_description p{
+  font-size:14px;
+}
+.course_timing_description{
+  @include sm {
+    flex-direction: row;
+    padding: 10px;
+  }
+  @include lg {
+    display: flex;
+    flex-direction: row;
+    padding:40px;
+ }
+}
+.course_time_icon{
+  @include sm {
+    display: flex;
+    font-size: 10px;
+  }
+  @include lg {
+    display: flex;
+    font-size: 16px;
+ }
+}
+.pgn__icon {
+  @include sm {
+    display: block;
+    height: 15px !important;
+    position: relative;
+    width: 15px !important;
+    flex-shrink: 0;
+  }
+  @include lg {
+    display: block;
+    height: 1.5em;
+    position: relative;
+    width: 1.5em;
+    flex-shrink: 0;
+ }
+}
+
+.startEndTime{
+  @include sm {
+    font-size: 10px;
+    margin-left: 27px;
+    font-weight: bold;
+  }
+  @include lg {
+    font-size: 14px;
+    font-weight: bold;
+    left: 16px;
+    position: relative;
+ }
+}
+.course_dates{
+  @include sm {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0 !important;
+  }
+  @include lg {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-right: 12px;
+    padding-left: 12px;
+ }
+ 
+}
+
+.course_start_date{
+  @include sm {
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+  }
+  @include lg {
+    display: flex;
+    flex-direction: column;
+    padding: 12 !important;
+    max-width: 150px !important;
+ }
+  
+}
+.course_seperator{
+  @include sm {
+    display: none;
+  }
+  @include lg {
+    padding: 12 !important;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    max-width: 20px !important;
+  }
+  
+}
+.course_end_date {
+  @include sm {
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+  }
+  @include lg {
+    display: flex;
+    flex-direction: column;
+    padding: 12 !important;
+    max-width: 150px !important;
+ }
+}
+.course_duration{
+  @include sm {
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+    font-size: 12px;
+  }
+  @include lg {
+    display: flex;
+    flex-direction: column;
+    padding-right: 12px;
+    padding-left: 12px;
+ }
+}
+.course_bookmark{
+  @include sm {
+    display: flex;
+    flex-direction: row;
+    height: 10px;
+    font-size: 12px;
+  }
+  @include lg {
+    display:flex;
+    flex-direction:row;
+    font-size: 15px;
+ }
+}
+
+.raised-card {
+  @include sm {
+    border: 0 !important;
+    box-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.2) !important;
+    position: absolute;
+    bottom: -15px;
+    left: 25%;
+  }
+  @include lg {
+    border: 0 !important;
+    box-shadow: 0 .0625rem .125rem rgba(0, 0, 0, .2) !important;
+    position: relative;
+  }
+}
+.startResumeBtn{
+  @include sm {
+    color: #000 !important;
+    background-color: #FFF !important;
+    border: none !important;
+    height: 30px;
+    font-size: 12px !important;
+  }
+  @include lg {
+    color: #000 !important;
+    background-color: #FFF !important;
+    border-color: none !important;
+    height: 50px;
+    font-size: 14px !important;
+  }
+}
+.course_total_time{
+  @include sm {
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 700;
+  }
+  @include lg {
+    font-size:12px;
+    line-height: 14px;
+  }
+}
+.align-middle {
+  @include sm {
+    vertical-align: middle !important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 30px;
+  }
+  @include lg {
+    vertical-align: middle !important;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+
+.instructorToolbar{
+  @include sm {
+    display:none;
+  }
+  @include lg {
+    display: block;
+  }
+}
+
+.subsection_course {
+  @include sm {
+    border-bottom: 1px solid #D0D5DD;
+    height: 35px;
+    font-size: 13px;
+  }
+  @include lg {
+    border-bottom: 1px solid #D0D5DD;
+    height: 45px;
+    font-size: 15px;
+  }
+ 
+}
+.text-breakz {
+  @include sm {
+    word-break: break-word !important;
+    word-wrap: break-word !important;
+    max-width: 75% !important;
+  }
+  @include lg {
+    word-break: break-word !important;
+    word-wrap: break-word !important;
+    max-width: 100% !important;
+  }
+  
+}
+.course_overview_title{
+
+  @include sm {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px !important;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 0rem;
+    color:#1D2939;
+  }
+  @include lg {
+    width: 350px;
+    height: 30px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px !important;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 0rem;
+    color:#1D2939;
+  }
+}
+
+.course_auth_list{
+  @include sm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 8.52px;
+    width: 300px;
+    height: 45px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+  @include lg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 8.52px;
+    width: 343px;
+    height: 45px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+  
+}
+.couse_inform{
+  @include sm {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8.52px;
+    width: 300px;
+    height: 35px;
+    border-bottom: 1px solid #D0D5DD !important;
+  }
+  @include lg {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8.52px;
+    width: 343px;
+    height: 35px;
+    border-bottom: 1px solid #D0D5DD !important;
+  }
+}
+.course_left{
+  @include sm {
+    width: 108px;
+    height: 30px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 30px;
+    color: #475467;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  @include lg {
+    width: 108px;
+    height: 30px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    color: #475467;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+}
+.course_right{
+  @include sm {
+    width: 125px;
+    height: 30px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 30px;
+    color: #475467;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    text-align: end;
+  }
+  @include lg {
+    width: 125px;
+    height: 30px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    color: #475467;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    text-align: end;
+  }
+   
+}
+
+.expandBtn{
+  color: #FFF !important;
+}
+  
+  
+
+
+ .container {
+  @include sm {
+  }
+  @include lg {
+  }
+  
+}
+
+
+$black: #2D3137;
+
+@mixin checkbox($color) {
+  margin-right: 1rem;
+  padding-left: 1.75rem;
+  position: relative;
+  -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  input[type="checkbox"] { 
+    position: absolute;
+    opacity: 0;
+    &:focus ~ span {
+      border: 2px solid lighten($black, 50%);
+    }
+    &:focus:checked ~ span {
+      border: 2px solid darken($color, 15%);
+    }
+    &:checked ~ span {
+      color: $white;
+      background: $color url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHdpZHRoPSIxMiIgaGVpZ2h0PSI5IiB2aWV3Qm94PSIwIDAgMTIgOSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiAgPHBhdGggZD0iTTQuNTc1IDguOTc3cy0uNDA0LS4wMDctLjUzNi0uMTY1TC4wNTcgNS42NGwuODI5LTEuMjI3TDQuNDcgNy4yNjggMTAuOTIxLjA4NmwuOTIzIDEuMTAzLTYuODYzIDcuNjRjLS4xMzQtLjAwMy0uNDA2LjE0OC0uNDA2LjE0OHoiIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPg0KPC9zdmc+) 50% 40% no-repeat;
+      border: 2px solid $color;
+    }
+  }
+  span {
+    border-radius: $border-radius;
+    left: 0;
+    position: absolute;
+    top: 4px;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: lighten($black, 65%);
+    border: 2px solid lighten($black, 65%);
+    pointer-events: none;
+    -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  } 
+}
+
+
+label.checkbox { 
+ @include checkbox($green);
+  &.blue {
+   @include checkbox($blue);
+ }
+ &.red {
+   @include checkbox($red);
+ }
+ &.black {
+   @include checkbox($black);
+ }
+}
+
 
 #root {
   display: flex;
@@ -333,10 +915,6 @@
     flex-basis: 25%;
   }
 }
-
-// This class forces any modals using 'modal-lti' as their dialogClassName to take up the whole
-// window (retaining padding around the edge).  Bootstrap modals don't have a full-screen
-// size like this.  Because of the hack below around react-focus-on's div, it would be better long-term to pull this into Paragon and perhaps call it "modal-full" or something like that.
 .modal-lti {
   height: 100%;
   max-width: 100% !important;
@@ -372,226 +950,98 @@
   }
 }
 
-.raised-card {
-  border: 0 !important;
-  box-shadow: 0 .0625rem .125rem rgba(0, 0, 0, .2) !important;
-}
-
-
-
 
 // Custom styles
 
-$black: #2D3137;
 
 
-@mixin checkbox($color) {
- margin-right: 1rem;
- padding-left: 1.75rem;
- position: relative;
- -webkit-user-select: none;
-    -moz-user-select: none;
-     -ms-user-select: none;
-         user-select: none;
+.assessmentSection{
+  padding-left: 40px;
+  padding-right: 40px;
+}
 
 
- input[type="checkbox"] { 
-   position: absolute;
-   opacity: 0;
 
 
-   &:focus ~ span {
-     border: 2px solid lighten($black, 50%);
-   }
+  .back_img {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    background-size: cover;
+    width: 100%;
+    filter: blur(4.5px);
+    object-fit: cover;
+  }
+
+  .back_grad{
+    background: radial-gradient(41.72% 41.72% at 50% 47.59%, rgba(0, 0, 0, 0) 1.35%, rgba(0, 0, 0, 0.099) 1.36%, rgba(0, 0, 0, 0.77265) 99.99%, rgba(0, 0, 0, 0.774) 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+  }
+
+  .item-info{
+    color: #344054;
+  }
+
+  .course-outline-tab{
+    padding-left: 50px;
+    padding-right: 50px;
+    background: #FFF;
+    color:#344054;
+  }
+
+  .course_details_left{
+    display:flex;
+    flex-direction:column;
+    position: absolute !important;
+    z-index: 3;
+    height: 100%;
+
+  }
 
 
-   &:focus:checked ~ span {
-     border: 2px solid darken($color, 15%);
-   }
 
-
-   &:checked ~ span {
-     color: $white;
-     background: $color url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHdpZHRoPSIxMiIgaGVpZ2h0PSI5IiB2aWV3Qm94PSIwIDAgMTIgOSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiAgPHBhdGggZD0iTTQuNTc1IDguOTc3cy0uNDA0LS4wMDctLjUzNi0uMTY1TC4wNTcgNS42NGwuODI5LTEuMjI3TDQuNDcgNy4yNjggMTAuOTIxLjA4NmwuOTIzIDEuMTAzLTYuODYzIDcuNjRjLS4xMzQtLjAwMy0uNDA2LjE0OC0uNDA2LjE0OHoiIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPg0KPC9zdmc+) 50% 40% no-repeat;
-     border: 2px solid $color;
-   }
   
- }
 
+ 
+  
+ 
+  .course_status_right {
+    display: grid;
+    align-items: end;
+    justify-content: center;
+    position: absolute !important;
+    right:20px;
+    bottom:10px;
+    z-index: 3;
+  }
 
- span {
-   border-radius: $border-radius;
-   left: 0;
-   position: absolute;
-   top: 4px;
-   width: 1.5rem;
-   height: 1.5rem;
+  .course_expand_section{
+    display:flex;
+    justify-content: space-between;
+  }
 
-
-   background-color: lighten($black, 65%);
-   border: 2px solid lighten($black, 65%);
-   pointer-events: none;
-   -webkit-user-select: none;
-      -moz-user-select: none;
-       -ms-user-select: none;
-           user-select: none;
- } 
-}
-
-
-label.checkbox { 
- @include checkbox($green);
-  &.blue {
-   @include checkbox($blue);
- }
-
-
- &.red {
-   @include checkbox($red);
- }
- &.black {
-   @include checkbox($black);
- }
-}
-
-
-
-.grid {
-  position: relative;
-  min-height:370px;
-  display: block;
-  color:white;
-  object-fit: cover;
-  grid-template-columns: repeat(3, minmax(100px, 1fr));
-  background-color: rgba(32, 22, 22, 0.514);
-}
-
-.back_img{
-  position: absolute;
-  z-index: 1;
-  height: 100%;
-  background-size: cover;
-  width: 100%;
-  filter: blur(4.5px);
-}
-
-.back_grad{
-  background: radial-gradient(41.72% 41.72% at 50% 47.59%, rgba(0, 0, 0, 0) 1.35%, rgba(0, 0, 0, 0.099) 1.36%, rgba(0, 0, 0, 0.77265) 99.99%, rgba(0, 0, 0, 0.774) 100%);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 4;
-}
-
-.item-info{
-  color: #344054;
-}
-
-.course-outline-tab{
-  padding-left: 50px;
-  padding-right: 50px;
-  background: #FFF;
-  color:#344054;
-}
-
-.course_details_left{
-  display:flex;
-  flex-direction:column;
-  position: absolute !important;
-  z-index: 3;
-
-}
-
-.course_title_description{
-  display: grid;
-  align-content: end;
-  min-height: 70%;
-  padding:40px;
-  font-family: 'Inter', sans-serif;
-
-}
-
-.course_title_description p{
-  font-size:14px;
-}
-.course_timing_description{
-  display: flex;
-  flex-direction: row;
-  padding:40px;
-}
-.course_title_name{
-  font-size: 30px;
-  font-family: inter;
-  font-weight: 600;
-  padding-bottom: 5px;
-  font-family: 'Inter', sans-serif;
-}
-
-.course_dates{
-  display:flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-.course_start_date{
-  display: flex;
-  flex-direction:column;
-}
-
-.course_time_icon{
-  display: flex;
-}
-.course_bookmark{
-  display:flex;
-  flex-direction:row;
-}
-
-.course_total_time{
-  font-size:12px;
-
-}
-.course_seperator{
-  font-size: 30px;
-  display: flex;
-  justify-content: center;
-}
-
-.course_status_right {
-  display: grid;
-  align-items: end;
-  justify-content: center;
-  position: absolute !important;
-  right:20px;
-  bottom:10px;
-  z-index: 3;
-}
-
-.course_expand_section{
-  display:flex;
-  justify-content: space-between;
-}
-
-.course_overview_description{
-  line-break: loose;
-  font-size: 16px;
-  text-align: justify;
-}
-
-
-.text-bread-crumbs{
-  color:rgb(18, 18, 18) !important;
-}
-.bread-crumbs-ico{
-  color: rgb(42, 36, 36) !important;
-}
-
-.radial_grad{
-  background: radial-gradient(23.72% 23.72% at 50% 47.59%, rgba(0, 0, 0, 0) 1.35%, rgba(0, 0, 0, 0.099) 1.36%, rgba(0, 0, 0, 0.77265) 99.99%, rgba(0, 0, 0, 0.774) 100%);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 3;
-}
-.course_desc_abt{
+  .course_overview_description{
+    line-break: loose;
+    font-size: 16px;
+    text-align: justify;
+  }
+  .text-bread-crumbs{
+    color:rgb(18, 18, 18) !important;
+  }
+  .bread-crumbs-ico{
+    color: rgb(42, 36, 36) !important;
+  }
+  .radial_grad{
+    background: radial-gradient(23.72% 23.72% at 50% 47.59%, rgba(0, 0, 0, 0) 1.35%, rgba(0, 0, 0, 0.099) 1.36%, rgba(0, 0, 0, 0.77265) 99.99%, rgba(0, 0, 0, 0.774) 100%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+  }
+  .course_desc_abt{
   width: 400px;
   height: 30px;
   font-family: 'Poppins';
@@ -606,14 +1056,13 @@ label.checkbox {
   order: 0;
   flex-grow: 0;
   }
-
   .collapsible-trigger{
     border-left: 4px solid #014384;
     padding: 0.75rem 1.25rem !important;
     background: #FFF !important;
     color: #344054 important;
     box-shadow: 0px 0px 12px -2px rgba(16, 24, 40, 0.1), 0px 1px 8px -2px rgba(16, 24, 40, 0.06) !important;
-      }
+  }
   .collapsible-card-lg {
     position: relative;
     display: flex;
@@ -631,15 +1080,7 @@ label.checkbox {
     border-color: #75acca !important;
     box-shadow: 0px 0px 12px -2px rgba(16, 24, 40, 0.1), 0px 1px 8px -2px rgba(16, 24, 40, 0.06) !important;
   }
-
-  .align-middle {
-    vertical-align: middle !important;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 30px;;
-  }
+ 
   .align-middle-sidebar {
     vertical-align: middle !important;
     font-family: "Poppins";
@@ -648,79 +1089,11 @@ label.checkbox {
     font-size: 16px;
     line-height: 0px;
   }
+ 
+ 
 
-  .course_auth_list{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
-    gap: 8.52px;
-    width: 343px;
-    height: 45px;
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
-  }
-  .couse_inform{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 8.52px;
-    width: 343px;
-    height: 35px;
-    border-bottom: 1px solid #D0D5DD !important;
-
-  }
-
-  .course_left{
-    width: 108px;
-    height: 30px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 30px;
-    color: #475467;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-  }
-
-  .course_right{
-      width: 125px;
-      height: 30px;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 30px;
-      color: #475467;
-      flex: none;
-      order: 1;
-      flex-grow: 0;
-      text-align: end;
-  }
-
-  .course_overview_title{
-    width: 350px;
-    height: 30px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 22px !important;
-    line-height: 30px;
-    display: flex;
-    align-items: center;
-    padding: 1.5rem 0rem;
-    color:#1D2939;
-  }
-  .course_duration{
-    display: flex;
-    flex-direction: column;
-  }
+ 
+  
   .course_descrip{
     width: 343px;
     height: 210px;
@@ -746,7 +1119,6 @@ label.checkbox {
     order: 0;
     flex-grow: 1;
   }
-
   .course_sidebar_tree{
     font-family: 'Inter';
     font-style: normal;
@@ -756,21 +1128,9 @@ label.checkbox {
     flex: none;
   }
 
-  .learning-header{
-    height: 55px !important;
-  background: linear-gradient(98.94deg, #02407C -10.01%, #0192D9 107.52%) !important;
-  box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.1), 0px 2px 4px -2px rgba(16, 24, 40, 0.06) !important;
-  }
-
- 
-  .subsection_course{
-    border-bottom: 1px solid #D0D5DD;
-  }
-
   .course_tools_section{
-    height:300px;
+    height: 220px;
   }
-
   .custom_sidebar{
     
     display: flex;
@@ -827,27 +1187,10 @@ label.checkbox {
   .course-nav-links a:hover{
     border-bottom: 3px solid  #02407C;
   }
-
-
-.course_title_short_description{
-  font-family:"poppins";
-  font-size:"14px";
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+  .course-title-lockup{
+    color:#FFF !important;
+  }
   .video_screens{
     min-height: 500px;
     min-width: 100%;
@@ -861,13 +1204,12 @@ label.checkbox {
   .hands-on-lab{
     width: 100%;
   }
-
   .course_navbar{
     display: flex;
     flex-direction: row;
   }
-
   .start_assessment{
+    color:#fff !important;
     width: 250px;
     height: 61px;
     background: linear-gradient(98.94deg, #014384 -10.01%, #0192D9 107.52%);
@@ -878,17 +1220,11 @@ label.checkbox {
     font-weight: 700;
     font-size: 20px;
     line-height: 30px;
-    border: none !important;
- 
- 
- 
- 
+    border: none !important; 
     margin-left: 0 !important;
     left: -40px !important;
     position: relative !important;
   }
- 
- 
   .assessment_title{
     display: flex;
     flex-direction: row;
@@ -910,8 +1246,6 @@ label.checkbox {
   .assessment_title_name{
     margin-left:10px;
   }
- 
- 
   .assessment_guidelines{
     word-break: break-all;
   }

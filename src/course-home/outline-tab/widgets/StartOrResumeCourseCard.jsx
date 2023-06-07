@@ -46,10 +46,10 @@ const StartOrResumeCourseCard = ({ intl }) => {
       <Card.Header
         actions={(
           <Button
+            className="startResumeBtn" 
             block
             href={resumeCourseUrl}
             onClick={() => logResumeCourseClick()}
-            style={{ color: '#000', backgroundColor: '#FFF', borderColor: 'none' }}
           >
             <Icon src={PlayCircleOutline} />
             {hasVisitedCourse ? intl.formatMessage(messages.resume) : intl.formatMessage(messages.start)}

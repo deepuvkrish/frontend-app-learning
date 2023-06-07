@@ -20,10 +20,10 @@ const CourseHandouts = ({ intl }) => {
   }
 
   return (
-    <section className="mb-4">
-      <span className="course_overview_title">{intl.formatMessage(messages.handouts)}</span>
-      <span className="course_descrip">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quibusdam error mollitia id molestiae. Tempore quaerat porro quo veniam laboriosam, velit sit quis laudantium, perspiciatis adipisci minus voluptatibus accusantium commodi.</span>
-    </section>
+    <></>    // <section className="mb-4">
+    //   <span className="course_overview_title">{intl.formatMessage(messages.handouts)}</span>
+    //   <span className="course_descrip">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quibusdam error mollitia id molestiae. Tempore quaerat porro quo veniam laboriosam, velit sit quis laudantium, perspiciatis adipisci minus voluptatibus accusantium commodi.</span>
+    // </section>
   );
 };
 

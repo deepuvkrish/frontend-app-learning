@@ -181,7 +181,7 @@ const AssessOutline = ({
  return (
    <>
      <div className="container-fluid">
-       <div data-learner-type={learnerType} className="row w-100 mx-0 my-3 justify-content-between">
+       <div data-learner-type={learnerType} className="row w-100 mx-0 my-3 justify-content-between assessmentSection">
        <div className="col-8 col-sm-auto p-0 assessment_title">
          {/* <img src={courseImage}></img> */}
          <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--rTwykorI--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://thepracticaldev.s3.amazonaws.com/i/acj7wmyd64eku8uh45f9.jpeg" className='assessment_title_logo'/>

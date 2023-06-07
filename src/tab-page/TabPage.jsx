@@ -4,7 +4,8 @@ import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 
-import Footer from '@edx/frontend-component-footer';
+// import Footer from '@edx/frontend-component-footer';
+import Footer from './Footer';
 import { Toast } from '@edx/paragon';
 import { LearningHeader as Header } from '@edx/frontend-component-header';
 import PageLoading from '../generic/PageLoading';
