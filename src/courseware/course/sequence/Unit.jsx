@@ -233,7 +233,7 @@ const Unit = ({
             id="unit-iframe"
             title={unit.title}
             src={iframeUrl}
-            allow={IFRAME_FEATURE_POLICY}
+            allow={IFRAME_FEATURE_POLICY} 
             allowFullScreen
             height={iframeHeight}
             scrolling="no"

@@ -141,7 +141,10 @@ const AssessUnit = ({
   }, [id, setIframeHeight, hasLoaded, iframeHeight, setHasLoaded, onLoaded]);
 
   return (
-    <div className="unit">
+    <div className="unit" 
+         style={{
+          width:'inherit',
+          }}>
       <div className='unit-nav'>
         <div className="col-6 course-inner-title">
           <h1 className="mb-0 h2 mt-3">{unit.title}</h1>

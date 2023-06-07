@@ -155,7 +155,10 @@ import React, {
                 
                   {shouldDisplayNotificationTriggerInSequence && <SidebarTriggers />}
                   
-                  <div className="unit-container flex-grow-1">
+                  <div className="assess-unit-container mx-1 flex-grow-1"
+                       style={{
+                        width: "inherit"
+                       }}>
   
                     <AssessSequenceContent
                       courseId={courseId}

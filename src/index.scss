@@ -271,7 +271,13 @@
     }
   }
 }
-
+.course-title-lockup{
+  visibility: hidden;
+}
+.footer{
+  visibility: collapse;
+  display: none !important;
+}
 .unit-container {
   padding: 0 $grid-gutter-width 2rem;
   max-width: 1024px;
@@ -281,7 +287,14 @@
   @media (min-width: 830px) {
   }
 }
+.assess-unit-container {
+  padding: 0 $grid-gutter-width 2rem;
+  margin-left: auto;
+  margin-right: auto;
 
+  @media (min-width: 830px) {
+  }
+}
 .unit-iframe-wrapper {
   margin: 0 -20px 2rem;
 

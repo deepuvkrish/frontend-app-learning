@@ -80,7 +80,7 @@ const TabPage = ({ intl, ...props }) => {
           courseTitle={title}
         />
         <LoadedTabPage {...props} />
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   }
